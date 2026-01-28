@@ -126,7 +126,7 @@ const baseTheme: ThemeOptions = {
           // width: "398px",
           height: "44px",
           opacity: 1,
-          px:'16px',
+          px: "16px",
 
           "& .MuiOutlinedInput-root": {
             borderRadius: "4px",
@@ -201,6 +201,95 @@ const baseTheme: ThemeOptions = {
           "& .MuiOutlinedInput-notchedOutline": {
             display: "none",
           },
+        },
+      },
+    },
+    MuiTabs: {
+      styleOverrides: {
+        root: {
+          minHeight: "36px", // height of the tabs container
+          backgroundColor: COLORS.surface.LightFieldNav, // background of tab bar
+          borderRadius: "14px",
+          padding: "4px",
+          width: "100%",
+        },
+        //  sx={{
+        // "& .MuiTabs-indicator": {
+        //   display: "none",
+        // // },
+        indicator: {
+          // backgroundColor: COLORS.secondary.main, // active tab underline color
+          // height: "3px", // thickness of the indicator
+          display: "none",
+          // borderRadius: "3px 3px 0 0",
+        },
+        // flexContainer: {
+        //   gap: "8px", // spacing between tabs
+        // },
+      },
+    },
+
+    MuiTab: {
+      styleOverrides: {
+        root: {
+          width: "auto",
+          textTransform: "none", // disable uppercase
+          fontFamily: FONTS.lexendDeca,
+          fontWeight: FONT_WEIGHTS.semibold,
+          fontSize: "14px",
+          // lineHeight: "20px",
+          minHeight: "29px",
+          borderRadius: "14px",
+          minWidth: "350px",
+          color: COLORS.text.primary, // default tab text color
+          backgroundColor: "transparent", // default tab background
+          padding: "4px 8px",
+
+          "&.Mui-selected": {
+            color: COLORS.text.primary, // active tab text color
+            backgroundColor: COLORS.primary.main, // active tab background color
+          },
+
+          // "&:hover": {
+          //   color: COLORS.secondary.main, // hover text color
+          // },
+        },
+      },
+    },
+
+    MuiSwitch: {
+      styleOverrides: {
+        root: {
+          width: 42,
+          height: 24,
+          padding: 0,
+        },
+        switchBase: {
+          padding: 2,
+          transitionDuration: "300ms",
+
+          "&.Mui-checked": {
+            transform: "translateX(18px)",
+            color: "#fff",
+
+            "& + .MuiSwitch-track": {
+              backgroundColor: COLORS.primary.main,
+              opacity: 1,
+              border: 0,
+            },
+          },
+        },
+        thumb: {
+          width: 20,
+          height: 20,
+          borderRadius: 999,
+          backgroundColor: "#fff",
+          boxShadow: "0 2px 6px rgba(0,0,0,0.2)",
+        },
+        track: {
+          borderRadius: 999,
+          backgroundColor: COLORS.gray.silverGray,
+          opacity: 1,
         },
       },
     },

@@ -1,3 +1,10 @@
 export { default as CustomButton } from "./CustomButton/CustomButton";
 export { default as CustomTextField } from "./CustomTextField/CustomTextField";
+export { default as CustomSelect } from "./CustomSelect/CustomSelect";
 export { default as AuthLayout } from "./AuthLayout/AuthLayout";
+export { default as CustomPageHeader } from "./CustomPageHeader/CustomPageHeader";
+export { default as CustomUpload } from "./CustomUpload/CustomUpload";
+export { default as DynamicTable } from "./DynamicTable/DynamicTable";
+export { default as StatusChip } from "./StatusChip/StatusChip";
+export { default as CustomPill } from "./CustomPill/CustomPill";
+export { default as CustomModal } from "./CustomModal/CustomModal";

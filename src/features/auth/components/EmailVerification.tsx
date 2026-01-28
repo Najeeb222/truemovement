@@ -49,16 +49,17 @@ const EmailVerification = () => {
                 <Typography variant="bodySmallLight">
                     Didn't receive the email? Check your spam folder or
                 </Typography>
-                <CustomButton variant="outlined" background={COLORS.primary.main} textColor={COLORS.text.primary} title="Resend Reset Link" active={true} fullWidth
+                <CustomButton variant="outlined" background={COLORS.primary.main} textColor={COLORS.text.primary} title="Resend Reset Link" active={true} width={'100%'}
                 />
                 <CustomButton
                     startIcon={<WestOutlined />}
                     title="Back to Sign In"
-                    fullWidth
+                    width={'100%'}
                     active={true}
                     background={'transparent'}
                     textColor={COLORS.text.primary}
                     variant='contained'
+
 
 
                 />

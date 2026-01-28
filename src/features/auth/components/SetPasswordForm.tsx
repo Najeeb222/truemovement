@@ -1,7 +1,6 @@
 import { Stack, Typography } from "@mui/material";
 import { WestOutlined } from "@mui/icons-material";
 import { useForm, FormProvider } from "react-hook-form";
-import { useState } from "react";
 import { COLORS, ROUTES } from "@src/constant";
 import { CustomButton, CustomTextField } from "@src/shared/components";
 import { useNavigate } from "react-router";
@@ -25,7 +24,7 @@ const SetPasswordForm = () => {
 
   const password = watch("password") || "";
 
-  // ✅ Password Rules
+
   const rules = {
     length: password.length >= 8,
     upper: /[A-Z]/.test(password),
@@ -40,7 +39,7 @@ const SetPasswordForm = () => {
 
   const onSubmit = (data: FormData) => {
     console.log("Reset Password Data:", data);
-    navigate(ROUTES.emailVerification);
+    navigate(ROUTES.dashboard);
   };
 
   return (
@@ -122,6 +121,7 @@ const SetPasswordForm = () => {
               background={allValid ? COLORS.primary.main : undefined}
               textColor={allValid ? COLORS.text.primary : undefined}
               onClick={() => methods.handleSubmit(onSubmit)()}
+              width={'100%'}
             />
 
             {/* Back */}
@@ -134,6 +134,7 @@ const SetPasswordForm = () => {
               textColor={COLORS.text.primary}
               variant="contained"
               onClick={() => navigate(ROUTES.resetPassword)}
+              width={'100%'}
             />
 
           </Stack>

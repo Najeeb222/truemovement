@@ -127,6 +127,7 @@ const SignInForm = () => {
               active={isFormValid}
               background={isFormValid ? COLORS.primary.main : undefined}
               textColor={isFormValid ? COLORS.text.primary : undefined}
+              width={'100%'}
             />
           </Stack>
         </form>

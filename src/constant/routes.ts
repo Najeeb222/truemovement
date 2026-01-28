@@ -1,12 +1,22 @@
 export const ROUTES = {
+  // Auth Routes
   login: "/login",
-  // verifyLogin: "/verify-login",
   resetPassword: "/reset-password",
   forgotPassword: "/forgot-password",
   emailVerification: "/email-verification",
   setPassword: "/set-password",
-  // dashboard: "/dashboard",
-  // customers: "/customers",
-  // providers: "/providers",
-  // reports: "/reports",
+
+  // Main Routes
+  dashboard: "/dashboard",
+  contentLibrary: "/content-library",
+  sessions: "/sessions",
+  programs: "/programs",
+  educational: "/educational",
+  railsCuration: "/rails-curation",
+  announcements: "/announcements",
+  tags: "/tags",
+  organizations: "/organizations",
+  analytics: "/analytics",
+  adminManagement: "/admin-management",
+  settings: "/settings",
 };

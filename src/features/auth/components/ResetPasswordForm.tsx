@@ -96,7 +96,7 @@ const ResetPasswordForm = () => {
                         <CustomButton
                             // type="submit"
                             title="Sign In"
-                            fullWidth
+                            width={'100%'}
                             active={isFormValid}
 
                             background={isFormValid ? COLORS.primary.main : undefined}
@@ -111,6 +111,7 @@ const ResetPasswordForm = () => {
                             background={'transparent'}
                             textColor={COLORS.text.primary}
                             variant='contained'
+                            width={'100%'}
 
                         />
                     </Stack>

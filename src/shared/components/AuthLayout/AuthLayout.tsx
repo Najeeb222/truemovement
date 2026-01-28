@@ -4,7 +4,7 @@ import type React from "react";
 
 const AuthLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <Grid container>
+    <Grid container >
       <Grid size={{ md: 6, sm: 6, xs: 12 }} sx={{ position: "relative" }}>
         <Box
           component={"img"}
@@ -46,7 +46,7 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
       </Grid>
       <Grid
         size={{ md: 6, sm: 6, xs: 12 }}
-        sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
+        sx={{ display: "flex", justifyContent: "center", alignItems: "center", padding: 3 }}
       >
         {children}
       </Grid>
