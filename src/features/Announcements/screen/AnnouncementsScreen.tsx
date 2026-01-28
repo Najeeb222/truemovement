@@ -37,7 +37,6 @@ const AnnouncementsScreen = () => {
         setEnabledStates(newStates)
         console.log(`${announcementsData[index].title} toggled:`, enabled)
     }
-
     return (
         <AppLayout>
        
