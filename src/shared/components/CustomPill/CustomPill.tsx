@@ -9,6 +9,8 @@ interface CustomPillProps {
   onClick?: () => void;
   onDelete?: () => void;
   variant?: "filled" | "outlined";
+  color?: string;
+  isIcone?: boolean;
 }
 
 const CustomPill = ({
@@ -17,9 +19,20 @@ const CustomPill = ({
   onClick,
   onDelete,
   variant = "outlined",
+  color,
+  isIcone
 }: CustomPillProps) => {
   return (
     <Chip
+      icon={
+        isIcone ? (
+          <img
+            src="/assets/icons/shieldIcon.svg"
+            alt="icon"
+            style={{ width: 12, height: 12 }}
+          />
+        ) : undefined
+      }
       label={label}
       size="small"
       variant={selected ? "filled" : variant}
@@ -37,7 +50,7 @@ const CustomPill = ({
         height: "24px",
         fontWeight: 300,
         backgroundColor: selected ? COLORS.primary.main : "transparent",
-        color: COLORS.text.primary,
+        color: color ? color : COLORS.text.primary,
         borderColor: COLORS.natural[100],
         "& .MuiChip-label": {
           paddingX: "8px",

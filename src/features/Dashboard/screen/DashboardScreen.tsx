@@ -14,13 +14,7 @@ const DashboardScreen = () => {
         }
     })
 
-    const selectOptions = [
-        { value: 'fitness', label: 'Fitness' },
-        { value: 'meditation', label: 'Meditation' },
-        { value: 'cardio', label: 'Cardio' },
-        { value: 'strength', label: 'Strength Training' },
-    ]
-
+   
     return (
         // <div>
         <AppLayout>

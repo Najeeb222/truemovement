@@ -94,50 +94,6 @@ export const rows: ProgramRow[] = [
   },
 ];
 
-// export const columns = [
-//   {
-//     key: "title",
-//     label: "Title",
-//     type: "text",
-//   },
-//   {
-//     key: "sport",
-//     label: "Sport",
-//     type: "pill",
-//   },
-//   {
-//     key: "painPoint",
-//     label: "Pain Point",
-//     type: "pill",
-//   },
-//   {
-//     key: "props",
-//     label: "Props",
-//     type: "pill",
-//   },
-//   {
-//     key: "duration",
-//     label: "Duration",
-//     type: "pill",
-//   },
-//   {
-//     key: "status",
-//     label: "Status",
-//     type: "status",
-//   },
-//   {
-//     key: "date",
-//     label: "Date Uploaded",
-//     type: "text",
-//   },
-//   {
-//     key: "actions",
-//     label: "",
-//     type: "actions",
-//   },
-// ];
-
-
 export const columns: Column<ProgramRow>[] = [
   { key: "title", label: "Title", type: "text" },
   { key: "sport", label: "Sport", type: "pill" },
@@ -147,4 +103,60 @@ export const columns: Column<ProgramRow>[] = [
   { key: "status", label: "Status", type: "status" },
   { key: "date", label: "Date Uploaded", type: "text" },
   { key: "actions", label: "", type: "actions" },
+];
+export const AdminTableColumns = [
+  { key: "name", label: "Name", type: "text" },
+  { key: "email", label: "Email", type: "text" },
+  { key: "role", label: "Role", type: "role" },
+  { key: "status", label: "Status", type: "status" },
+  { key: "lastLogin", label: "Last Login", type: "date" },
+  { key: "date", label: "Created", type: "date" },
+  { key: "actions", label: "", type: "actions" },
+];
+export const AdminTableRows = [
+  {
+    name: "Sarah Johnson",
+    email: "sarah.johnson@example.com",
+    role: "contentManager",
+    status: "Active",
+    lastLogin: "01/20/2026",
+    date: "12/13/2025",
+  },
+  {
+    name: "Michael Brown",
+    email: "michael.brown@example.com",
+    role: "superAdmin",
+    status: "Inactive",
+    lastLogin: "01/18/2026",
+    date: "12/10/2025",
+  },
+  {
+    name: "Emily Davis",
+    email: "emily.davis@example.com",
+    role: "superAdmin",
+    status: "active",
+    lastLogin: "01/22/2026",
+    date: "12/08/2025",
+  },
+  {
+    name: "James Wilson",
+    email: "james.wilson@example.com",
+    role: "contentManager",
+    status: "Active",
+    lastLogin: "01/25/2026",
+    date: "12/05/2025",
+  },
+  {
+    name: "Olivia Martinez",
+    email: "olivia.martinez@example.com",
+    role: "superAdmin",
+    status: "Archived",
+    lastLogin: "01/10/2026",
+    date: "12/01/2025",
+  },
+];
+
+export const adminRole = [
+  { value: "superAdmin", label: "Super Admin" },
+  { value: "contentManager", label: "Content Manager" },
 ];

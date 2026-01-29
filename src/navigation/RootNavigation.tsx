@@ -1,5 +1,5 @@
 import { ROUTES } from "@constant";
-import { AnnouncementsContainer, DashboardContainer, ResetPasswordContainer, SessionContainer, SignInContainer } from "@src/features";
+import { AdminManagementContainer, AnalyticsContainer, AnnouncementsContainer, DashboardContainer, ResetPasswordContainer, SessionContainer, SignInContainer } from "@src/features";
 import EmailVerificationContainer from "@src/features/auth/containers/EmailVerificationContainer";
 import SetPasswordContainer from "@src/features/auth/containers/SetPasswordContainer";
 import ProgramContainer from "@src/features/ContentLibrary/containers/ProgramContainer";
@@ -33,6 +33,8 @@ function Routes() {
       <Route path={ROUTES.settings} element={<SettingsContainer />} />
       <Route path={ROUTES.sessions} element={<SessionContainer />} />
       <Route path={ROUTES.programs} element={<ProgramContainer />} />
+      <Route path={ROUTES.adminManagement} element={<AdminManagementContainer />} />
+      <Route path={ROUTES.analytics} element={<AnalyticsContainer />} />
       {/* <Route path={ROUTES.customers} element={<CustomersContainer />} /> */}
       {/* <Route path={ROUTES.providers} element={<ProvidersContainer />} /> */}
       {/* <Route path={ROUTES.reports} element={<ReportsContainer />} /> */}

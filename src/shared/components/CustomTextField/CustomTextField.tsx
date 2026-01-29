@@ -32,6 +32,7 @@ interface CustomTextFieldProps {
   defaultValue?: string;
   rules?: RegisterOptions;
   showHelperText?: boolean;
+  isSearch?: boolean;
   allowOnly?: "numeric" | "alphabetic" | "alphanumeric" | "decimal";
   onBlur?: (
     event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement, Element>,
@@ -63,6 +64,7 @@ const CustomTextField: React.FC<CustomTextFieldProps> = ({
   autoComplete,
   readOnly = false,
   showHelperText = true,
+  isSearch = false,
   endAdornment,
   ...props
 }) => {
@@ -166,6 +168,18 @@ const CustomTextField: React.FC<CustomTextFieldProps> = ({
                 onInput: handleInputChange,
               }}
               InputProps={{
+                startAdornment: isSearch ? (
+                  <InputAdornment position="start">
+                    <img 
+                      src="/assets/icons/searchIcon.svg" 
+                      alt="search" 
+                      style={{ width: 24, height: 24,
+                        marginLeft: 8 
+                        
+                       }}
+                    />
+                  </InputAdornment>
+                ) : undefined,
                 endAdornment: endAdornment ? endAdornment : <div />,
                 readOnly,
                 autoComplete,

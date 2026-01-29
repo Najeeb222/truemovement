@@ -32,7 +32,13 @@ const baseTheme: ThemeOptions = {
   },
   typography: {
     fontFamily: [FONTS.default].join(","),
-
+heading1:{
+   fontFamily: FONTS.montserrat,
+      fontWeight: FONT_WEIGHTS.semibold,
+      fontSize: "28px",
+      lineHeight: "34px",
+      color: COLORS.text.primary,
+},
     // Your custom variants
     heading2: {
       fontFamily: FONTS.montserrat,

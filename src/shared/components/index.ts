@@ -8,3 +8,4 @@ export { default as DynamicTable } from "./DynamicTable/DynamicTable";
 export { default as StatusChip } from "./StatusChip/StatusChip";
 export { default as CustomPill } from "./CustomPill/CustomPill";
 export { default as CustomModal } from "./CustomModal/CustomModal";
+export { default as CustomRowMenu } from "./CustomRowMenu/CustomRowMenu";

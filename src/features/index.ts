@@ -6,3 +6,5 @@ export { default as AnnouncementsContainer } from "./Announcements/container/Ann
 
 export { default as SessionContainer } from "./ContentLibrary/containers/SessionContainner";
 export { default as ProgramsContainer } from "./ContentLibrary/containers/ProgramContainer";
+export { default as AdminManagementContainer } from "./AdminManagement/container/AdminManagementContainer";
+export { default as AnalyticsContainer } from "./Analytics/container/AnalyticsContainer";

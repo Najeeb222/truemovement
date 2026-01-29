@@ -94,7 +94,7 @@ const Sidebar = ({ onItemClick }: { onItemClick?: () => void }) => {
                 <Box component="img" src="/assets/images/dashbaordLogo.svg" sx={{ width: 170 }} />
             </Box>
 
-      
+
             <List
                 sx={{
                     flex: 1,
