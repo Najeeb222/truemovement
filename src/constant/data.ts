@@ -101,7 +101,7 @@ export const columns: Column<ProgramRow>[] = [
   { key: "props", label: "Props", type: "pill" },
   { key: "duration", label: "Duration", type: "pill" },
   { key: "status", label: "Status", type: "status" },
-  { key: "date", label: "Date Uploaded", type: "text" },
+  { key: "date", label: "Date Uploaded", type: "date" },
   { key: "actions", label: "", type: "actions" },
 ];
 export const AdminTableColumns = [
@@ -160,3 +160,24 @@ export const adminRole = [
   { value: "superAdmin", label: "Super Admin" },
   { value: "contentManager", label: "Content Manager" },
 ];
+export const publishingOptions = [
+  {
+    value: "draft",
+    label: "Draft",
+  },
+  {
+    value: "scheduled",
+    label: "Scheduled",
+  },
+  {
+    value: "published",
+    label: "Published",
+  },
+];
+
+export const ACCESS = {
+    GLOBAL: "global",
+    TAGS: "tags",
+    ALL_ORGS: "all_orgs",
+    SELECTED_ORGS: "selected_orgs",
+};

@@ -384,46 +384,208 @@ export const AnalyticsIcon: React.FC<DashboardLogoProps> = ({ color = "#2E2E2E",
 
 
 export const UsersIcon: React.FC<DashboardLogoProps> = ({
-  color = "#525252",
-  ...props
+    color = "#525252",
+    ...props
 }) => (
-  <svg
-    width="20"
-    height="20"
-    viewBox="0 0 20 20"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    {...props}
-  >
-    <path
-      d="M13.3332 17.5V15.8333C13.3332 14.9493 12.982 14.1014 12.3569 13.4763C11.7317 12.8512 10.8839 12.5 9.99984 12.5H4.99984C4.11578 12.5 3.26794 12.8512 2.64281 13.4763C2.01769 14.1014 1.6665 14.9493 1.6665 15.8333V17.5"
-      stroke={color}
-      strokeWidth="1.66667"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-    <path
-      d="M13.3335 2.60547C14.0483 2.79078 14.6813 3.20819 15.1332 3.79219C15.5851 4.37619 15.8303 5.09371 15.8303 5.83214C15.8303 6.57056 15.5851 7.28808 15.1332 7.87208C14.6813 8.45608 14.0483 8.87349 13.3335 9.0588"
-      stroke={color}
-      strokeWidth="1.66667"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-    <path
-      d="M18.3335 17.501V15.8344C18.3329 15.0958 18.0871 14.3784 17.6346 13.7946C17.1821 13.2109 16.5486 12.794 15.8335 12.6094"
-      stroke={color}
-      strokeWidth="1.66667"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-    <path
-      d="M7.49984 9.16667C9.34079 9.16667 10.8332 7.67428 10.8332 5.83333C10.8332 3.99238 9.34079 2.5 7.49984 2.5C5.65889 2.5 4.1665 3.99238 4.1665 5.83333C4.1665 7.67428 5.65889 9.16667 7.49984 9.16667Z"
-      stroke={color}
-      strokeWidth="1.66667"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>
+    <svg
+        width="20"
+        height="20"
+        viewBox="0 0 20 20"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        {...props}
+    >
+        <path
+            d="M13.3332 17.5V15.8333C13.3332 14.9493 12.982 14.1014 12.3569 13.4763C11.7317 12.8512 10.8839 12.5 9.99984 12.5H4.99984C4.11578 12.5 3.26794 12.8512 2.64281 13.4763C2.01769 14.1014 1.6665 14.9493 1.6665 15.8333V17.5"
+            stroke={color}
+            strokeWidth="1.66667"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+        />
+        <path
+            d="M13.3335 2.60547C14.0483 2.79078 14.6813 3.20819 15.1332 3.79219C15.5851 4.37619 15.8303 5.09371 15.8303 5.83214C15.8303 6.57056 15.5851 7.28808 15.1332 7.87208C14.6813 8.45608 14.0483 8.87349 13.3335 9.0588"
+            stroke={color}
+            strokeWidth="1.66667"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+        />
+        <path
+            d="M18.3335 17.501V15.8344C18.3329 15.0958 18.0871 14.3784 17.6346 13.7946C17.1821 13.2109 16.5486 12.794 15.8335 12.6094"
+            stroke={color}
+            strokeWidth="1.66667"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+        />
+        <path
+            d="M7.49984 9.16667C9.34079 9.16667 10.8332 7.67428 10.8332 5.83333C10.8332 3.99238 9.34079 2.5 7.49984 2.5C5.65889 2.5 4.1665 3.99238 4.1665 5.83333C4.1665 7.67428 5.65889 9.16667 7.49984 9.16667Z"
+            stroke={color}
+            strokeWidth="1.66667"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+        />
+    </svg>
+);
+
+
+
+
+export const DotGridIcon: React.FC<DashboardLogoProps> = ({
+    color = "#2E2E2E",
+    width = 16,
+    height = 16,
+    ...props
+}) => (
+    <svg
+        width={width}
+        height={height}
+        viewBox="0 0 16 16"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        {...props}
+    >
+        <path
+            d="M6 8.66634C6.36835 8.66634 6.66683 8.36786 6.66683 7.99967C6.66683 7.63148 6.36835 7.33301 6 7.33301C5.63197 7.33301 5.3335 7.63148 5.3335 7.99967C5.3335 8.36786 5.63197 8.66634 6 8.66634Z"
+            stroke={color}
+            strokeWidth="1.33333"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+        />
+        <path
+            d="M6 4.00033C6.36835 4.00033 6.66683 3.70185 6.66683 3.33366C6.66683 2.96547 6.36835 2.66699 6 2.66699C5.63197 2.66699 5.3335 2.96547 5.3335 3.33366C5.3335 3.70185 5.63197 4.00033 6 4.00033Z"
+            stroke={color}
+            strokeWidth="1.33333"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+        />
+        <path
+            d="M6 13.3333C6.36835 13.3333 6.66683 13.0349 6.66683 12.6667C6.66683 12.2985 6.36835 12 6 12C5.63197 12 5.3335 12.2985 5.3335 12.6667C5.3335 13.0349 5.63197 13.3333 6 13.3333Z"
+            stroke={color}
+            strokeWidth="1.33333"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+        />
+        <path
+            d="M10 8.66634C10.3684 8.66634 10.6668 8.36786 10.6668 7.99967C10.6668 7.63148 10.3684 7.33301 10 7.33301C9.63197 7.33301 9.3335 7.63148 9.3335 7.99967C9.3335 8.36786 9.63197 8.66634 10 8.66634Z"
+            stroke={color}
+            strokeWidth="1.33333"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+        />
+        <path
+            d="M10 4.00033C10.3684 4.00033 10.6668 3.70185 10.6668 3.33366C10.6668 2.96547 10.3684 2.66699 10 2.66699C9.63197 2.66699 9.3335 2.96547 9.3335 3.33366C9.3335 3.70185 9.63197 4.00033 10 4.00033Z"
+            stroke={color}
+            strokeWidth="1.33333"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+        />
+        <path
+            d="M10 13.3333C10.3684 13.3333 10.6668 13.0349 10.6668 12.6667C10.6668 12.2985 10.3684 12 10 12C9.63197 12 9.3335 12.2985 9.3335 12.6667C9.3335 13.0349 9.63197 13.3333 10 13.3333Z"
+            stroke={color}
+            strokeWidth="1.33333"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+        />
+    </svg>
+);
+
+
+
+export const SplitCircleIcon: React.FC<DashboardLogoProps> = ({
+    color = "#2E2E2E",
+    width = 16,
+    height = 16,
+    ...props
+}) => (
+    <svg
+        width={width}
+        height={height}
+        viewBox="0 0 16 16"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        {...props}
+    >
+        <g clipPath="url(#clip0)">
+            <path
+                d="M8.00016 14.6673C11.6821 14.6673 14.6668 11.6825 14.6668 8.00065C14.6668 4.31875 11.6821 1.33398 8.00016 1.33398C4.31826 1.33398 1.3335 4.31875 1.3335 8.00065C1.3335 11.6825 4.31826 14.6673 8.00016 14.6673Z"
+                stroke={color}
+                strokeWidth="1.33333"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+            />
+            <path
+                d="M8.00016 1.33398C6.28832 3.13142 5.3335 5.51848 5.3335 8.00065C5.3335 10.4828 6.28832 12.8699 8.00016 14.6673C9.71201 12.8699 10.6668 10.4828 10.6668 8.00065C10.6668 5.51848 9.71201 3.13142 8.00016 1.33398Z"
+                stroke={color}
+                strokeWidth="1.33333"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+            />
+            <path
+                d="M1.3335 8H14.6668"
+                stroke={color}
+                strokeWidth="1.33333"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+            />
+        </g>
+        <defs>
+            <clipPath id="clip0">
+                <rect width={16} height={16} fill="white" />
+            </clipPath>
+        </defs>
+    </svg>
+);
+
+
+
+export const CloseCircleIcon: React.FC<DashboardLogoProps> = ({
+    color = "#2E2E2E",
+    width = 16,
+    height = 16,
+    ...props
+}) => (
+    <svg
+        width={width}
+        height={height}
+        viewBox="0 0 16 16"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        {...props}
+    >
+        <path
+            d="M7.9648 1.2998C4.28293 1.2998 1.2998 4.28293 1.2998 7.9648C1.2998 11.6467 4.28293 14.6298 7.9648 14.6298C11.6467 14.6298 14.6298 11.6467 14.6298 7.9648C14.6298 4.28293 11.6467 1.2998 7.9648 1.2998ZM11.2328 9.71437C11.3591 9.84068 11.3591 10.0449 11.2328 10.1712L10.1686 11.2328C10.0422 11.3591 9.83799 11.3591 9.71168 11.2328L7.9648 9.4698L6.21524 11.2328C6.08893 11.3591 5.88468 11.3591 5.75837 11.2328L4.6968 10.1686C4.57049 10.0422 4.57049 9.83799 4.6968 9.71168L6.4598 7.9648L4.6968 6.21524C4.57049 6.08893 4.57049 5.88468 4.6968 5.75837L5.76105 4.69412C5.88737 4.5678 6.09162 4.5678 6.21793 4.69412L7.9648 6.4598L9.71437 4.6968C9.84068 4.57049 10.0449 4.57049 10.1712 4.6968L11.2355 5.76105C11.3618 5.88737 11.3618 6.09162 11.2355 6.21793L9.4698 7.9648L11.2328 9.71437Z"
+            fill={color}
+        />
+    </svg>
+);
+
+
+export const ArrowLeftIcon: React.FC<DashboardLogoProps> = ({
+    color = "#2E2E2E",
+    ...props
+}) => (
+    <svg
+        width="16"
+        height="16"
+        viewBox="0 0 16 16"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        {...props}
+    >
+        <path
+            d="M8.00065 12.6673L3.33398 8.00065L8.00065 3.33398"
+            stroke={color}
+            strokeWidth="1.33333"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+        />
+        <path
+            d="M12.6663 8H3.33301"
+            stroke={color}
+            strokeWidth="1.33333"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+        />
+    </svg>
 );
 
 

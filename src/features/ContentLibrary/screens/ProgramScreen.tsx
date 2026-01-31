@@ -13,9 +13,6 @@ const ProgramScreen = () => {
     <AppLayout>
       <FormProvider {...methods}>
 
-      <Stack gap={'24px'}>
-
- 
       <CustomPageHeader
         title="Programs"
         subtitle="Manage and create sessions"
@@ -27,6 +24,9 @@ const ProgramScreen = () => {
           active={true}
         />
       </CustomPageHeader>
+      <Stack gap={'24px'} sx={{ p: { xs: 2, sm: 3, md: 4 },}} >
+
+ 
       <CustomTextField placeholder="Search by title" type="text" name="search" />
       <DynamicTable<ProgramRow> columns={columns} data={rows} />
              </Stack>

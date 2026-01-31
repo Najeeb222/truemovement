@@ -1,7 +1,7 @@
 import { FormProvider, useForm } from 'react-hook-form'
 import AppLayout from '@src/shared/components/AppLayout/AppLayout'
 import AnalyticsCard from '../components/AnalyticsCard'
-import { CustomPageHeader, } from '@src/shared/components'
+import { ContentLibraryCustomHeader, CustomPageHeader, } from '@src/shared/components'
 import { Box, Stack } from '@mui/material'
 import { cardData, NewRailsIcon, ProgramsIcon, SessionsIcon } from '@src/constant'
 import RecentUploadCard from '../components/RecentUploadCard'
@@ -14,16 +14,17 @@ const DashboardScreen = () => {
         }
     })
 
-   
+
     return (
         // <div>
         <AppLayout>
             <FormProvider {...methods}>
-                <Stack gap={'24px'} >
+                    {/* <CustomPageHeader title="Dashboard" subtitle="Welcome back. Here's what's happening with True Movement today." /> */}
+                    <ContentLibraryCustomHeader subtitle='Add a new video session to the content library' title='Upload New Session' backTitle='Content Library'/>
+                    <Stack sx={{ p: { xs: 2, sm: 3, md: 4 },}} >
+                <Stack gap={'24px'}   >
 
 
-                    <CustomPageHeader title="Dashboard" subtitle="Welcome back. Here's what's happening with True Movement today." />
-                    <Stack >
 
                         {/* <CustomUpload
   name="thumbnail"

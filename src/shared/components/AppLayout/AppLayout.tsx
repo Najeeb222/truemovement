@@ -59,7 +59,7 @@ const AppLayout = ({ children }: { children: React.ReactNode }) => {
                     flex: 1,
                     //   mt: { xs: "64px", md: 0 },
                     //   ml: { xs: 0, md: `${SIDEBAR_WIDTH}px` },
-                    p: { xs: 2, sm: 3, md: 4 },
+                    // p: { xs: 2, sm: 3, md: 4 },
                     width: "100%",
                     gap: '24px'
                 }}

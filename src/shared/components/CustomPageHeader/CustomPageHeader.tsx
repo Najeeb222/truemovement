@@ -8,8 +8,8 @@ type CustomPageHeaderProps = {
 
 const CustomPageHeader = ({ subtitle, title, children }: CustomPageHeaderProps) => {
     return (
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', }}>
-            <Stack direction="column" spacing={"8px"}>
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', p: { xs: 2, sm: 3, md: 4 }, }}>
+            <Stack direction="column" spacing={"8px"} >
 
 
                 <Typography variant="heading2" gutterBottom>

@@ -1,4 +1,5 @@
-import { Chip } from "@mui/material";
+import React from "react";
+import { Chip, Box, Typography } from "@mui/material";
 import { Close } from "@mui/icons-material";
 import { COLORS } from "@src/constant";
 import { FONTS } from "@src/styles/theme";
@@ -11,58 +12,112 @@ interface CustomPillProps {
   variant?: "filled" | "outlined";
   color?: string;
   isIcone?: boolean;
+  Icon?: React.ReactElement;
+  width?: string;
+  endIcon?: React.ReactElement;
 }
 
-const CustomPill = ({
+const CustomPill: React.FC<CustomPillProps> = ({
   label,
   selected = false,
   onClick,
   onDelete,
   variant = "outlined",
   color,
-  isIcone
-}: CustomPillProps) => {
+  Icon,
+  isIcone = false,
+  width,
+  endIcon,
+}) => {
+  const renderIcon = (): React.ReactElement | undefined => {
+    if (Icon) return Icon;
+
+    if (isIcone) {
+      return (
+        <img
+          src="/assets/icons/shieldIcon.svg"
+          alt="icon"
+          width={12}
+          height={12}
+        />
+      );
+    }
+
+    return undefined;
+  };
+
   return (
     <Chip
-      icon={
-        isIcone ? (
-          <img
-            src="/assets/icons/shieldIcon.svg"
-            alt="icon"
-            style={{ width: 12, height: 12 }}
-          />
-        ) : undefined
+      icon={renderIcon()}
+      label={
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            gap: "6px",
+          }}
+        >
+          <Typography
+            sx={{
+              fontFamily: FONTS.lexendDeca,
+              fontSize: "12px",
+              fontWeight: 300,
+              lineHeight: 1,
+              color: color ?? COLORS.text.primary,
+              whiteSpace: "nowrap",
+            }}
+          >
+            {label}
+          </Typography>
+
+          {endIcon && (
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
+              {endIcon}
+            </Box>
+          )}
+        </Box>
       }
-      label={label}
       size="small"
       variant={selected ? "filled" : variant}
+      onClick={onClick}
       deleteIcon={
         selected ? (
-          <Close sx={{ fontSize: "14px !important", color: "inherit" }} />
+          <Close sx={{ fontSize: 14, color: "inherit" }} />
         ) : undefined
       }
       onDelete={selected ? onDelete : undefined}
-      onClick={onClick}
       sx={{
         borderRadius: "8px",
+        width: width ? width : "auto",
         fontFamily: FONTS.lexendDeca,
         fontSize: "12px",
         height: "24px",
         fontWeight: 300,
-        backgroundColor: selected ? COLORS.primary.main : "transparent",
-        color: color ? color : COLORS.text.primary,
+        backgroundColor: selected
+          ? COLORS.primary.main
+          : "transparent",
+        color: color ?? COLORS.text.primary,
         borderColor: COLORS.natural[100],
+
         "& .MuiChip-label": {
-          paddingX: "8px",
+          padding: "0 8px",
         },
+
         "&:hover": {
-          backgroundColor: selected ? COLORS.primary.main : undefined,
+          backgroundColor: selected
+            ? COLORS.primary.main
+            : COLORS.natural[50],
           opacity: 0.9,
         },
+
         "& .MuiChip-deleteIcon": {
           color: "inherit",
           "&:hover": {
-            color: "inherit",
             opacity: 0.8,
           },
         },

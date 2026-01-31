@@ -9,3 +9,5 @@ export { default as StatusChip } from "./StatusChip/StatusChip";
 export { default as CustomPill } from "./CustomPill/CustomPill";
 export { default as CustomModal } from "./CustomModal/CustomModal";
 export { default as CustomRowMenu } from "./CustomRowMenu/CustomRowMenu";
+export { default as ContentLibraryCustomHeader } from "./ContentLibraryCustomHeader/ContentLibraryCustomHeader";
+export { default as CustomCheckbox } from "./CustomCheckbox/CustomCheckbox";

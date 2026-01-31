@@ -4,7 +4,7 @@ import {
   useFormContext,
   type RegisterOptions,
 } from "react-hook-form";
-import HighlightOffOutlinedIcon from '@mui/icons-material/HighlightOffOutlined';
+import HighlightOffOutlinedIcon from "@mui/icons-material/HighlightOffOutlined";
 import {
   TextField,
   Typography,
@@ -20,7 +20,7 @@ interface CustomTextFieldProps {
   type: string;
   width?: string;
   height?: string;
-  multiline?: any;
+  multiline?: boolean;
   minRows?: number;
   maxRows?: number;
   readOnly?: boolean;
@@ -35,10 +35,10 @@ interface CustomTextFieldProps {
   isSearch?: boolean;
   allowOnly?: "numeric" | "alphabetic" | "alphanumeric" | "decimal";
   onBlur?: (
-    event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement, Element>,
+    event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => void;
   onFocus?: (
-    event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement, Element>,
+    event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => void;
   endAdornment?: React.ReactNode;
 }
@@ -55,10 +55,9 @@ const CustomTextField: React.FC<CustomTextFieldProps> = ({
   maxRows,
   onFocus,
   disabled,
-  multiline,
+  multiline = false,
   maxLength,
   allowOnly,
-  description,
   placeholder,
   defaultValue,
   autoComplete,
@@ -68,11 +67,11 @@ const CustomTextField: React.FC<CustomTextFieldProps> = ({
   endAdornment,
   ...props
 }) => {
-  const { control, formState } = useFormContext();
+  const { control } = useFormContext();
   const [showPassword, setShowPassword] = useState(false);
 
   const handleInputChange = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
+    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
       const value = e.target.value;
       const patterns = {
         numeric: /[^0-9]/g,
@@ -92,33 +91,23 @@ const CustomTextField: React.FC<CustomTextFieldProps> = ({
     [allowOnly, maxLength],
   );
 
-  // Label
   const renderLabel = () => (
-    <Typography variant="bodyMedium">
-      {label}
-    </Typography>
+    <Typography variant="bodyMedium">{label}</Typography>
   );
 
-  // Helper Text (Error Message)
   const renderHelperText = (errorMessage?: string) => {
     if (!showHelperText || !errorMessage) return null;
 
     return (
       <Stack direction="row" alignItems="center" spacing={0.5}>
         <HighlightOffOutlinedIcon
-          sx={{
-            color: COLORS.error.main,
-            width: 12,
-            height: 12,
-          }}
+          sx={{ color: COLORS.error.main, width: 12, height: 12 }}
         />
         <Typography
           sx={{
             fontFamily: FONTS.lexendDeca,
-            fontWeight: 300,
-            fontStyle: "Light",
-            letterSpacing: '.6px',
-            fontSize: '12px',
+            fontSize: "12px",
+            letterSpacing: ".6px",
             color: COLORS.error.main,
           }}
         >
@@ -128,61 +117,60 @@ const CustomTextField: React.FC<CustomTextFieldProps> = ({
     );
   };
 
-  // Main Component
   return (
-    <Stack 
-      width={{ md: width, sm: width, xs: "100%" }} 
-      gap={1} // This provides 8px gap (theme spacing 1 = 8px)
-    >
+    <Stack width={{ xs: "100%", sm: width, md: width }} gap={1}>
       {label && renderLabel()}
-      
+
       <Controller
         name={name}
-        defaultValue={defaultValue}
         control={control}
         rules={rules}
+        defaultValue={defaultValue}
         render={({ field, fieldState }) => (
           <>
             <TextField
-              variant="outlined"
-              disabled={disabled}
               {...field}
-              placeholder={placeholder || ""}
               {...props}
-              defaultValue={defaultValue || ""}
               fullWidth
+              disabled={disabled}
+              placeholder={placeholder}
               multiline={multiline}
               minRows={minRows}
               maxRows={maxRows}
-              error={!!fieldState.error}
-              sx={{
-                "& .MuiInputBase-root": {
-                  height: height || "inherit",
-                  padding: 0,
-                  border: 'none'
-                },
-              }}
               type={showPassword ? "text" : type}
+              error={!!fieldState.error}
               inputProps={{
                 maxLength,
                 onInput: handleInputChange,
               }}
               InputProps={{
+                readOnly,
+                autoComplete,
                 startAdornment: isSearch ? (
                   <InputAdornment position="start">
-                    <img 
-                      src="/assets/icons/searchIcon.svg" 
-                      alt="search" 
-                      style={{ width: 24, height: 24,
-                        marginLeft: 8 
-                        
-                       }}
+                    <img
+                      src="/assets/icons/searchIcon.svg"
+                      alt="search"
+                      style={{ width: 24, height: 24, marginLeft: 8 }}
                     />
                   </InputAdornment>
                 ) : undefined,
-                endAdornment: endAdornment ? endAdornment : <div />,
-                readOnly,
-                autoComplete,
+                endAdornment: endAdornment || <div />,
+              }}
+              sx={{
+                "& .MuiInputBase-root": {
+                  height: multiline ? "auto" : height || "48px",
+                  borderRadius: "8px",
+                  padding:0
+                },
+
+                "& .MuiInputBase-input": {
+                  padding: multiline ? "8px 14px" : "0 14px",
+                },
+
+                "& .MuiInputBase-inputMultiline": {
+                  padding:  "8px 14px",
+                },
               }}
               onBlur={(event) => {
                 field.onBlur();
@@ -190,9 +178,8 @@ const CustomTextField: React.FC<CustomTextFieldProps> = ({
               }}
               onFocus={onFocus}
             />
-            
-            {/* Error message rendered separately with proper spacing */}
-            {renderHelperText(fieldState.error?.message?.toString())}
+
+            {renderHelperText(fieldState.error?.message)}
           </>
         )}
       />

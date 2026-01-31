@@ -12,6 +12,11 @@ import AppLayout from "@src/shared/components/AppLayout/AppLayout";
 import type { ProgramRow } from "@src/types";
 import { FormProvider, useForm } from "react-hook-form";
 import { useState } from "react";
+import CustomBasicInformation from "../components/CustomBasicInformation";
+import CustomnstructionsAndSafety from "../components/CustomnstructionsAndSafety";
+import CustomPublishingOptions from "../components/CustomPublishingOptions";
+import CustomOrganizationAccess from "../components/CustomOrganizationAccess";
+
 
 /* ================= TYPES ================= */
 type ModalType = "edit" | "archive" | "delete" | null;
@@ -35,7 +40,7 @@ const SessionScreen = () => {
     if (type === "edit" && row) {
       methods.reset({
         title: row.title || "",
-     
+
       });
     }
   };
@@ -57,7 +62,7 @@ const SessionScreen = () => {
   return (
     <AppLayout>
       <FormProvider {...methods}>
-        <Stack gap={"24px"}>
+        <Stack gap={"24px"} sx={{ p: { xs: 2, sm: 3, md: 4 }, }} >
           <CustomPageHeader title="Sessions" subtitle="Manage and create sessions">
             <CustomButton
               title="Upload Session"
@@ -108,7 +113,15 @@ const SessionScreen = () => {
               },
             ]}
           />
+
+
+
+          <CustomnstructionsAndSafety />
+          <CustomPublishingOptions />
+          <CustomOrganizationAccess />
         </Stack>
+
+
 
         {/* ================= EDIT MODAL ================= */}
         {modalType === "edit" && selectedRow && (
@@ -190,7 +203,7 @@ const SessionScreen = () => {
                 title="Delete"
                 variant="contained"
                 active
-             
+
               />
             </Stack>
           </CustomModal>
