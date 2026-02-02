@@ -155,6 +155,32 @@ export const AdminTableRows = [
     date: "12/01/2025",
   },
 ];
+export const RailColumns = [
+  { key: "name", label: "Rail Name", type: "text" },
+  { key: "Items", label: "Items", type: "text" },
+  // { key: "role", label: "Role", type: "role" },
+  { key: "status", label: "Status", type: "status" },
+  // { key: "lastLogin", label: "Last Login", type: "date" },
+  // { key: "date", label: "Created", type: "date" },
+  { key: "actions", label: "", type: "actions" },
+];
+export const RailRows = [
+  {
+    name: "Sarah Johnson",
+    Items: "12 items",
+    status: "Active",
+  },
+  {
+    name: "Michael Brown",
+    Items: "8 items",
+    status: "Inactive",
+  },
+  {
+    name: "Emily Davis",
+    Items: "15 items",
+    status: "active",
+  },
+];
 
 export const adminRole = [
   { value: "superAdmin", label: "Super Admin" },
@@ -175,9 +201,36 @@ export const publishingOptions = [
   },
 ];
 
+export interface TagRow {
+  tagName: string;
+}
+
+export const tagsColumns: Column<TagRow>[] = [
+  { key: "tagName", label: "Tag Name", type: "pill" },
+
+  { key: "actions", label: "", type: "tagActions" },
+];
+export const tagsRow = [
+  {
+    tagName: "Sarah Johnson",
+  },
+  {
+    tagName: "Michael Brown",
+  },
+  {
+    tagName: "Emily Davis",
+  },
+  {
+    tagName: "James Wilson",
+  },
+  {
+    tagName: "Olivia Martinez",
+  },
+];
+
 export const ACCESS = {
-    GLOBAL: "global",
-    TAGS: "tags",
-    ALL_ORGS: "all_orgs",
-    SELECTED_ORGS: "selected_orgs",
+  GLOBAL: "global",
+  TAGS: "tags",
+  ALL_ORGS: "all_orgs",
+  SELECTED_ORGS: "selected_orgs",
 };

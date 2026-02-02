@@ -11,3 +11,5 @@ export { default as CustomModal } from "./CustomModal/CustomModal";
 export { default as CustomRowMenu } from "./CustomRowMenu/CustomRowMenu";
 export { default as ContentLibraryCustomHeader } from "./ContentLibraryCustomHeader/ContentLibraryCustomHeader";
 export { default as CustomCheckbox } from "./CustomCheckbox/CustomCheckbox";
+export { default as CreateTagModal } from "./CustomModal/CreateTagModal";
+export { default as DeleteTagModal } from "./CustomModal/DeleteTagModal";

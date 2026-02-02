@@ -13,15 +13,23 @@ import {
   Menu,
   MenuItem,
   ListItemIcon,
-
+  Stack,
+  Box,
 } from "@mui/material";
 import { COLORS } from "@src/constant";
-import { StatusChip, CustomPill, } from "@src/shared/components";
+import { StatusChip, CustomPill } from "@src/shared/components";
 import type { ReactNode } from "react";
 
 /* ================= TYPES ================= */
 
-export type ColumnType = "text" | "pill" | "status" | "actions" | "date" | "role";
+export type ColumnType =
+  | "text"
+  | "pill"
+  | "status"
+  | "actions"
+  | "date"
+  | "role"
+  | "tagActions";
 
 export interface Column<T> {
   key: keyof T | "actions";
@@ -41,6 +49,8 @@ interface DynamicTableProps<T> {
   columns: Column<T>[];
   data: T[];
   rowMenu?: (row: T) => RowMenuItem<T>[]; // function to provide custom menu per row
+  onEdit?: (row: T) => void;
+  onDelete?: (row: T) => void;
 }
 
 /* ================= COMPONENT ================= */
@@ -49,6 +59,8 @@ export default function DynamicTable<T extends Record<string, unknown>>({
   columns,
   data,
   rowMenu,
+  onEdit,
+  onDelete,
 }: DynamicTableProps<T>) {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [selectedRow, setSelectedRow] = useState<T | null>(null);
@@ -67,13 +79,20 @@ export default function DynamicTable<T extends Record<string, unknown>>({
   const renderCell = (column: Column<T>, row: T) => {
     if (column.render) return column.render(row);
 
-    const value = column.key === "actions" ? undefined : row[column.key as keyof T];
+    const value =
+      column.key === "actions" ? undefined : row[column.key as keyof T];
 
     switch (column.type) {
       case "pill":
         return <CustomPill label={String(value)} />;
       case "role":
-        return <CustomPill label={String(value)} color={COLORS.natural.black} isIcone={true} />;
+        return (
+          <CustomPill
+            label={String(value)}
+            color={COLORS.natural.black}
+            isIcone={true}
+          />
+        );
       case "status":
         return <StatusChip status={String(value)} />;
       case "actions":
@@ -83,21 +102,73 @@ export default function DynamicTable<T extends Record<string, unknown>>({
           </IconButton>
         );
       case "date":
-        return <Typography variant="bodySmallLight" sx={{ color: COLORS.text.secondary }}>{String(value)}</Typography>;
+        return (
+          <Typography
+            variant="bodySmallLight"
+            sx={{ color: COLORS.text.secondary }}
+          >
+            {String(value)}
+          </Typography>
+        );
+      case "tagActions":
+        return (
+          <Stack direction={"row"} sx={{ gap: "16px", justifyContent: "end" }}>
+            <IconButton
+              onClick={(e) => {
+                e.stopPropagation();
+                if (onEdit) onEdit(row);
+                else handleMenuOpen(e, row);
+              }}
+            >
+              <Box
+                component={"img"}
+                src="/assets/icons/editIcon.svg"
+                sx={{ width: "16px", height: "16px" }}
+              />
+            </IconButton>
+            <IconButton
+              onClick={(e) => {
+                e.stopPropagation();
+                if (onDelete) onDelete(row);
+                else handleMenuOpen(e, row);
+              }}
+            >
+              <Box
+                component={"img"}
+                src="/assets/icons/trashIcon.svg"
+                sx={{ width: "16px", height: "16px" }}
+              />
+            </IconButton>
+          </Stack>
+        );
+
       default:
-        return <Typography variant="bodySmallLight" color={COLORS.text.primary}>{String(value ?? "")}</Typography>;
+        return (
+          <Typography variant="bodySmallLight" color={COLORS.text.primary}>
+            {String(value ?? "")}
+          </Typography>
+        );
     }
   };
 
   return (
     <>
-      <TableContainer component={Paper} sx={{ borderRadius: "10px", border: `1px solid ${COLORS.natural[100]}`, boxShadow: "none" }}>
+      <TableContainer
+        component={Paper}
+        sx={{
+          borderRadius: "10px",
+          border: `1px solid ${COLORS.natural[100]}`,
+          boxShadow: "none",
+        }}
+      >
         <Table>
           <TableHead>
             <TableRow>
               {columns.map((col) => (
                 <TableCell key={String(col.key)} sx={{ paddingY: "13px" }}>
-                  <Typography variant="bodySmall" color={COLORS.text.primary}>{col.label}</Typography>
+                  <Typography variant="bodySmall" color={COLORS.text.primary}>
+                    {col.label}
+                  </Typography>
                 </TableCell>
               ))}
             </TableRow>
@@ -125,16 +196,27 @@ export default function DynamicTable<T extends Record<string, unknown>>({
           onClose={handleMenuClose}
           transformOrigin={{ horizontal: "right", vertical: "top" }}
           anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
-          PaperProps={{ sx: { borderRadius: "8px", minWidth: "140px", boxShadow: "  0px 4px 6px -1px #0000001A;" } }}
+          PaperProps={{
+            sx: {
+              borderRadius: "8px",
+              minWidth: "140px",
+              boxShadow: "  0px 4px 6px -1px #0000001A;",
+            },
+          }}
         >
           {rowMenu(selectedRow).map((item, idx) => (
             <MenuItem
               key={idx}
-              onClick={() => { item.onClick(selectedRow); handleMenuClose(); }}
+              onClick={() => {
+                item.onClick(selectedRow);
+                handleMenuClose();
+              }}
               sx={{ color: item.color || COLORS.text.primary }}
             >
               {item.icon && <ListItemIcon>{item.icon}</ListItemIcon>}
-              <Typography variant="bodySmallLight" color="inherit">{item.title}</Typography>
+              <Typography variant="bodySmallLight" color="inherit">
+                {item.title}
+              </Typography>
             </MenuItem>
           ))}
         </Menu>

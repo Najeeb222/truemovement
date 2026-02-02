@@ -32,13 +32,13 @@ const baseTheme: ThemeOptions = {
   },
   typography: {
     fontFamily: [FONTS.default].join(","),
-heading1:{
-   fontFamily: FONTS.montserrat,
+    heading1: {
+      fontFamily: FONTS.montserrat,
       fontWeight: FONT_WEIGHTS.semibold,
       fontSize: "28px",
       lineHeight: "34px",
       color: COLORS.text.primary,
-},
+    },
     // Your custom variants
     heading2: {
       fontFamily: FONTS.montserrat,
@@ -246,7 +246,7 @@ heading1:{
           // lineHeight: "20px",
           minHeight: "29px",
           borderRadius: "14px",
-          minWidth: "350px",
+          maxWidth: "350px",
           color: COLORS.text.primary, // default tab text color
           backgroundColor: "transparent", // default tab background
           padding: "4px 8px",

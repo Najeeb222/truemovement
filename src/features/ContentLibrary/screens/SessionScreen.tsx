@@ -1,5 +1,5 @@
 import { Add } from "@mui/icons-material";
-import { Box, Stack, Typography } from "@mui/material";
+import { Stack } from "@mui/material";
 import { columns, rows } from "@src/constant";
 import {
   CustomButton,
@@ -12,11 +12,12 @@ import AppLayout from "@src/shared/components/AppLayout/AppLayout";
 import type { ProgramRow } from "@src/types";
 import { FormProvider, useForm } from "react-hook-form";
 import { useState } from "react";
-import CustomBasicInformation from "../components/CustomBasicInformation";
+
 import CustomnstructionsAndSafety from "../components/CustomnstructionsAndSafety";
 import CustomPublishingOptions from "../components/CustomPublishingOptions";
 import CustomOrganizationAccess from "../components/CustomOrganizationAccess";
-
+import CustomTagsCategories from "../components/CustomTagsCategories";
+import { useNavigate } from "react-router";
 
 /* ================= TYPES ================= */
 type ModalType = "edit" | "archive" | "delete" | null;
@@ -31,7 +32,7 @@ const SessionScreen = () => {
 
   const [selectedRow, setSelectedRow] = useState<ProgramRow | null>(null);
   const [modalType, setModalType] = useState<ModalType>(null);
-
+  const navigate = useNavigate();
   /* ================= MODAL HELPERS ================= */
   const openModal = (type: ModalType, row?: ProgramRow) => {
     setSelectedRow(row || null);
@@ -40,7 +41,6 @@ const SessionScreen = () => {
     if (type === "edit" && row) {
       methods.reset({
         title: row.title || "",
-
       });
     }
   };
@@ -58,21 +58,32 @@ const SessionScreen = () => {
     console.log("Submitted:", data, "Row:", selectedRow);
     closeModal();
   };
+  const handleCreateSession = () => {
+    navigate("/create-session");
+  };
 
   return (
     <AppLayout>
       <FormProvider {...methods}>
-        <Stack gap={"24px"} sx={{ p: { xs: 2, sm: 3, md: 4 }, }} >
-          <CustomPageHeader title="Sessions" subtitle="Manage and create sessions">
+        <Stack gap={"24px"} sx={{ p: { xs: 2, sm: 3, md: 4 } }}>
+          <CustomPageHeader
+            title="Sessions"
+            subtitle="Manage and create sessions"
+          >
             <CustomButton
               title="Upload Session"
               startIcon={<Add />}
               variant="contained"
               active={true}
+              onClick={handleCreateSession}
             />
           </CustomPageHeader>
 
-          <CustomTextField placeholder="Search by title" type="text" name="search" />
+          <CustomTextField
+            placeholder="Search by title"
+            type="text"
+            name="search"
+          />
 
           <DynamicTable<ProgramRow>
             columns={columns}
@@ -114,14 +125,12 @@ const SessionScreen = () => {
             ]}
           />
 
-
+          <CustomTagsCategories />
 
           <CustomnstructionsAndSafety />
           <CustomPublishingOptions />
           <CustomOrganizationAccess />
         </Stack>
-
-
 
         {/* ================= EDIT MODAL ================= */}
         {modalType === "edit" && selectedRow && (
@@ -155,7 +164,11 @@ const SessionScreen = () => {
                     width="99px"
                     active
                   />
-                  <CustomButton title="Save Changes" variant="contained" active />
+                  <CustomButton
+                    title="Save Changes"
+                    variant="contained"
+                    active
+                  />
                 </Stack>
               </Stack>
             </form>
@@ -199,12 +212,7 @@ const SessionScreen = () => {
                 width="99px"
                 active
               />
-              <CustomButton
-                title="Delete"
-                variant="contained"
-                active
-
-              />
+              <CustomButton title="Delete" variant="contained" active />
             </Stack>
           </CustomModal>
         )}

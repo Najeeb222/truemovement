@@ -15,10 +15,13 @@ interface CustomPillProps {
   Icon?: React.ReactElement;
   width?: string;
   endIcon?: React.ReactElement;
+  height?: string;
+  borderRadius?: string;
 }
 
 const CustomPill: React.FC<CustomPillProps> = ({
   label,
+  borderRadius,
   selected = false,
   onClick,
   onDelete,
@@ -27,6 +30,7 @@ const CustomPill: React.FC<CustomPillProps> = ({
   Icon,
   isIcone = false,
   width,
+  height,
   endIcon,
 }) => {
   const renderIcon = (): React.ReactElement | undefined => {
@@ -92,11 +96,13 @@ const CustomPill: React.FC<CustomPillProps> = ({
       }
       onDelete={selected ? onDelete : undefined}
       sx={{
-        borderRadius: "8px",
+        borderRadius: borderRadius ? borderRadius : "8px",
         width: width ? width : "auto",
+        // width: width ? width : "auto",
+        height: height ? height : "24px",
         fontFamily: FONTS.lexendDeca,
         fontSize: "12px",
-        height: "24px",
+
         fontWeight: 300,
         backgroundColor: selected
           ? COLORS.primary.main

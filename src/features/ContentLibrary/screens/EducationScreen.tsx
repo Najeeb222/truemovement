@@ -8,39 +8,46 @@ import {
   DynamicTable,
 } from "@src/shared/components";
 import AppLayout from "@src/shared/components/AppLayout/AppLayout";
-import { useNavigate } from "react-router";
 import type { ProgramRow } from "@src/types";
 import { FormProvider, useForm } from "react-hook-form";
+import { useNavigate } from "react-router";
 
-const ProgramScreen = () => {
-  const methods = useForm();
+const EducationScreen = () => {
+  const methods = useForm({
+    defaultValues: {
+      search: "",
+    },
+  });
+
   const navigate = useNavigate();
 
-  const handleCreateProgram = () => {
-    navigate("/create-program");
+  const handleCreateEducation = () => {
+    navigate("/create-education");
   };
 
   return (
     <AppLayout>
       <FormProvider {...methods}>
-        <CustomPageHeader
-          title="Programs"
-          subtitle="Manage and create programs"
-        >
-          <CustomButton
-            title="Upload Program"
-            startIcon={<Add />}
-            variant="contained"
-            active={true}
-            onClick={handleCreateProgram}
-          />
-        </CustomPageHeader>
         <Stack gap={"24px"} sx={{ p: { xs: 2, sm: 3, md: 4 } }}>
+          <CustomPageHeader
+            title="Educational"
+            subtitle="Manage and create educational content"
+          >
+            <CustomButton
+              title="Upload Education"
+              startIcon={<Add />}
+              variant="contained"
+              active={true}
+              onClick={handleCreateEducation}
+            />
+          </CustomPageHeader>
+
           <CustomTextField
             placeholder="Search by title"
             type="text"
             name="search"
           />
+
           <DynamicTable<ProgramRow> columns={columns} data={rows} />
         </Stack>
       </FormProvider>
@@ -48,4 +55,4 @@ const ProgramScreen = () => {
   );
 };
 
-export default ProgramScreen;
+export default EducationScreen;

@@ -1,16 +1,11 @@
-import React, { useState, useCallback } from "react";
+import React, { useCallback } from "react";
 import {
   Controller,
   useFormContext,
   type RegisterOptions,
 } from "react-hook-form";
 import HighlightOffOutlinedIcon from "@mui/icons-material/HighlightOffOutlined";
-import {
-  TextField,
-  Typography,
-  InputAdornment,
-  Stack,
-} from "@mui/material";
+import { TextField, Typography, InputAdornment, Stack } from "@mui/material";
 import { COLORS } from "@src/constant";
 import { FONTS } from "@src/styles/theme";
 
@@ -41,6 +36,10 @@ interface CustomTextFieldProps {
     event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => void;
   endAdornment?: React.ReactNode;
+  value?: string;
+  onChange?: (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => void;
 }
 
 const CustomTextField: React.FC<CustomTextFieldProps> = ({
@@ -65,14 +64,15 @@ const CustomTextField: React.FC<CustomTextFieldProps> = ({
   showHelperText = true,
   isSearch = false,
   endAdornment,
-  ...props
+  value,
+  onChange,
 }) => {
-  const { control } = useFormContext();
-  const [showPassword, setShowPassword] = useState(false);
+  const methods = useFormContext();
+  const control = methods ? methods.control : undefined;
 
   const handleInputChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-      const value = e.target.value;
+      const val = e.target.value;
       const patterns = {
         numeric: /[^0-9]/g,
         decimal: /[^0-9.]/g,
@@ -81,7 +81,7 @@ const CustomTextField: React.FC<CustomTextFieldProps> = ({
       };
 
       if (allowOnly && patterns[allowOnly]) {
-        e.target.value = value.replace(patterns[allowOnly], "");
+        e.target.value = val.replace(patterns[allowOnly], "");
       }
 
       if (maxLength && e.target.value.length > maxLength) {
@@ -117,72 +117,81 @@ const CustomTextField: React.FC<CustomTextFieldProps> = ({
     );
   };
 
+  const renderTextField = (fieldProps?: any, fieldState?: any) => (
+    <TextField
+      {...(fieldProps || {})}
+      name={name}
+      type={type}
+      value={value !== undefined ? value : fieldProps?.value}
+      onChange={(e) => {
+        fieldProps?.onChange?.(e);
+        onChange?.(e);
+      }}
+      placeholder={placeholder}
+      multiline={multiline}
+      minRows={minRows}
+      maxRows={maxRows}
+      disabled={disabled}
+      error={!!fieldState?.error}
+      inputProps={{
+        maxLength,
+        onInput: handleInputChange,
+      }}
+      InputProps={{
+        readOnly,
+        autoComplete,
+        startAdornment: isSearch ? (
+          <InputAdornment position="start">
+            <img
+              src="/assets/icons/searchIcon.svg"
+              alt="search"
+              style={{ width: 24, height: 24, marginLeft: 8 }}
+            />
+          </InputAdornment>
+        ) : undefined,
+        endAdornment: endAdornment || <div />,
+      }}
+      sx={{
+        "& .MuiInputBase-root": {
+          height: multiline ? "auto" : height || "48px",
+          borderRadius: "8px",
+          padding: 0,
+        },
+        "& .MuiInputBase-input": {
+          padding: multiline ? "8px 14px" : "0 14px",
+        },
+        "& .MuiInputBase-inputMultiline": {
+          padding: "8px 14px",
+        },
+      }}
+      onBlur={(event) => {
+        fieldProps?.onBlur?.();
+        onBlur?.(event);
+      }}
+      onFocus={onFocus}
+    />
+  );
+
   return (
     <Stack width={{ xs: "100%", sm: width, md: width }} gap={1}>
       {label && renderLabel()}
 
-      <Controller
-        name={name}
-        control={control}
-        rules={rules}
-        defaultValue={defaultValue}
-        render={({ field, fieldState }) => (
-          <>
-            <TextField
-              {...field}
-              {...props}
-              fullWidth
-              disabled={disabled}
-              placeholder={placeholder}
-              multiline={multiline}
-              minRows={minRows}
-              maxRows={maxRows}
-              type={showPassword ? "text" : type}
-              error={!!fieldState.error}
-              inputProps={{
-                maxLength,
-                onInput: handleInputChange,
-              }}
-              InputProps={{
-                readOnly,
-                autoComplete,
-                startAdornment: isSearch ? (
-                  <InputAdornment position="start">
-                    <img
-                      src="/assets/icons/searchIcon.svg"
-                      alt="search"
-                      style={{ width: 24, height: 24, marginLeft: 8 }}
-                    />
-                  </InputAdornment>
-                ) : undefined,
-                endAdornment: endAdornment || <div />,
-              }}
-              sx={{
-                "& .MuiInputBase-root": {
-                  height: multiline ? "auto" : height || "48px",
-                  borderRadius: "8px",
-                  padding:0
-                },
-
-                "& .MuiInputBase-input": {
-                  padding: multiline ? "8px 14px" : "0 14px",
-                },
-
-                "& .MuiInputBase-inputMultiline": {
-                  padding:  "8px 14px",
-                },
-              }}
-              onBlur={(event) => {
-                field.onBlur();
-                onBlur?.(event);
-              }}
-              onFocus={onFocus}
-            />
-
-            {renderHelperText(fieldState.error?.message)}
-          </>
-        )}
-      />
+      {control ? (
+        <Controller
+          name={name}
+          control={control}
+          rules={rules}
+          defaultValue={defaultValue}
+          render={({ field, fieldState }) => (
+            <>
+              {renderTextField(field, fieldState)}
+              {renderHelperText(fieldState.error?.message)}
+            </>
+          )}
+        />
+      ) : (
+        renderTextField()
+      )}
     </Stack>
   );
 };

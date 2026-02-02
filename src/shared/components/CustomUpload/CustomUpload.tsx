@@ -89,6 +89,7 @@ const CustomUpload: React.FC<CustomUploadProps> = ({
         gap: "30px",
         padding: "24px",
         borderRadius: "14px",
+        background: COLORS.surface.white,
       }}
     >
       {label && (
