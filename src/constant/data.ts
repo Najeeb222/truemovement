@@ -155,8 +155,8 @@ export const AdminTableRows = [
     date: "12/01/2025",
   },
 ];
-export const RailColumns = [
-  { key: "name", label: "Rail Name", type: "text" },
+export const RailColumns: Column<ProgramRow>[] = [
+  { key: "title", label: "Rail Name", type: "text" },
   { key: "Items", label: "Items", type: "text" },
   // { key: "role", label: "Role", type: "role" },
   { key: "status", label: "Status", type: "status" },
@@ -164,21 +164,21 @@ export const RailColumns = [
   // { key: "date", label: "Created", type: "date" },
   { key: "actions", label: "", type: "actions" },
 ];
-export const RailRows = [
+export const RailRows: ProgramRow[] = [
   {
-    name: "Sarah Johnson",
+    title: "Sarah Johnson",
     Items: "12 items",
     status: "Active",
   },
   {
-    name: "Michael Brown",
+    title: "Michael Brown",
     Items: "8 items",
     status: "Inactive",
   },
   {
-    name: "Emily Davis",
+    title: "Emily Davis",
     Items: "15 items",
-    status: "active",
+    status: "Active",
   },
 ];
 

@@ -18,9 +18,8 @@ export const COLORS = {
   },
   success: {
     main: "#05B2D8240",
-
   },
-  
+
   surface: {
     LightFieldNav: "#F3F3F5",
     white: "#FFFFFF",
@@ -53,6 +52,7 @@ export const COLORS = {
     primary: "#2E2E2E",
     secondary: "#757575",
     tertiary: "#8E8E8E",
+    secondaryGray: "#737373",
   },
   gradients: {
     mainGradient: "linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 100%)",
