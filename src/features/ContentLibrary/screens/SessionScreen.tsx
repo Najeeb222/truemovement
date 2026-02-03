@@ -65,7 +65,7 @@ const SessionScreen = () => {
   return (
     <AppLayout>
       <FormProvider {...methods}>
-        <Stack gap={"24px"} sx={{ p: { xs: 2, sm: 3, md: 4 } }}>
+        <Stack gap={"24px"}>
           <CustomPageHeader
             title="Sessions"
             subtitle="Manage and create sessions"

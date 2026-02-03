@@ -6,7 +6,13 @@ import { useState } from "react";
 
 const SIDEBAR_WIDTH = 255;
 
-const AppLayout = ({ children }: { children: React.ReactNode }) => {
+const AppLayout = ({
+  children,
+  disablePadding = false,
+}: {
+  children: React.ReactNode;
+  disablePadding?: boolean;
+}) => {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const toggleDrawer = () => setMobileOpen((prev) => !prev);
@@ -63,9 +69,7 @@ const AppLayout = ({ children }: { children: React.ReactNode }) => {
         component="main"
         sx={{
           flex: 1,
-          //   mt: { xs: "64px", md: 0 },
-          //   ml: { xs: 0, md: `${SIDEBAR_WIDTH}px` },
-          p: { xs: 2, sm: 3, md: 4 },
+          p: disablePadding ? 0 : { xs: 2, sm: 3, md: 4 },
           width: "100%",
           gap: "24px",
         }}

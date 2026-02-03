@@ -16,7 +16,7 @@ import { COLORS } from "@src/constant";
 const CreateProgramScreen = () => {
   const methods = useForm();
   return (
-    <AppLayout>
+    <AppLayout disablePadding>
       <FormProvider {...methods}>
         <ContentLibraryCustomHeader
           backTitle="Programs"
@@ -24,40 +24,42 @@ const CreateProgramScreen = () => {
           subtitle="Add a new program to the content library"
         />
 
-        <CustomBasicInformation />
-        <CustomUpload
-          name="programThumbnail"
-          type="image"
-          label="Thumbnail Image"
-        />
-        <CustomUpload name="VideoFile" type="video" label="Video File" />
-        <CustomTagsCategories />
-        <CustomnstructionsAndSafety />
-        <CustomOrganizationAccess />
-        <CustomPublishingOptions />
-        <Box
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-          }}
-        >
-          <CustomButton
-            title="Cancel"
-            variant="outlined"
-            active
-            background="transparent"
+        <Stack sx={{ p: { xs: 2, sm: 3, md: 4 } }}>
+          <CustomBasicInformation />
+          <CustomUpload
+            name="programThumbnail"
+            type="image"
+            label="Thumbnail Image"
           />
-          <Stack direction={"row"} sx={{ gap: "16px" }}>
+          <CustomUpload name="VideoFile" type="video" label="Video File" />
+          <CustomTagsCategories />
+          <CustomnstructionsAndSafety />
+          <CustomOrganizationAccess />
+          <CustomPublishingOptions />
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+            }}
+          >
             <CustomButton
-              title={"Save as Draft"}
+              title="Cancel"
               variant="outlined"
-              background={COLORS.primary.main}
               active
+              background="transparent"
             />
-            <CustomButton title="Publish" variant="contained" />
-          </Stack>
-        </Box>
+            <Stack direction={"row"} sx={{ gap: "16px" }}>
+              <CustomButton
+                title={"Save as Draft"}
+                variant="outlined"
+                background={COLORS.primary.main}
+                active
+              />
+              <CustomButton title="Publish" variant="contained" />
+            </Stack>
+          </Box>
+        </Stack>
       </FormProvider>
     </AppLayout>
   );

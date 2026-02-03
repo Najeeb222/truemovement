@@ -1,30 +1,35 @@
-import { Box, Stack, Typography } from '@mui/material'
+import { Box, Stack, Typography } from "@mui/material";
 
 type CustomPageHeaderProps = {
-    title: string;
-    subtitle: string;
-    children?: React.ReactNode;
-}
+  title: string;
+  subtitle: string;
+  children?: React.ReactNode;
+};
 
-const CustomPageHeader = ({ subtitle, title, children }: CustomPageHeaderProps) => {
-    return (
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', p: { xs: 2, sm: 3, md: 4 }, }}>
-            <Stack direction="column" spacing={"8px"} >
+const CustomPageHeader = ({
+  subtitle,
+  title,
+  children,
+}: CustomPageHeaderProps) => {
+  return (
+    <Box
+      sx={{
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+      }}
+    >
+      <Stack direction="column" spacing={"8px"}>
+        <Typography variant="heading2" gutterBottom>
+          {title}
+        </Typography>
+        <Typography variant="bodyMeduiemLight" color="textSecondary">
+          {subtitle}
+        </Typography>
+      </Stack>
+      <Box>{children}</Box>
+    </Box>
+  );
+};
 
-
-                <Typography variant="heading2" gutterBottom>
-                    {title}
-                </Typography>
-                <Typography variant="bodyMeduiemLight" color="textSecondary">
-                    {subtitle}
-                </Typography>
-            </Stack>
-            <Box>
-                {children}
-            </Box>
-
-        </Box >
-    )
-}
-
-export default CustomPageHeader
+export default CustomPageHeader;
