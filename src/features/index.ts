@@ -16,3 +16,6 @@ export { default as TagsContainer } from "./ContentLibrary/containers/TagsContai
 export { default as RailsAndCurationContainer } from "./ContentLibrary/containers/RailsAndCurationContainer";
 
 export { default as CreateRailsCurationContainer } from "./ContentLibrary/containers/CreateRailsCurationContainer";
+export { default as OrganizationsContainer } from "./Organizations/container/OrganizationsContainer";
+
+export { default as OrganizationsDetailContainer } from "./Organizations/container/OrganizationsDetailContainer";

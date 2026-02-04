@@ -38,6 +38,7 @@ const baseTheme: ThemeOptions = {
       fontSize: "28px",
       lineHeight: "34px",
       color: COLORS.text.primary,
+      display: "block",
     },
     // Your custom variants
     heading2: {
@@ -46,6 +47,15 @@ const baseTheme: ThemeOptions = {
       fontSize: "24px",
       lineHeight: "30px",
       color: COLORS.text.primary,
+      display: "block",
+    },
+    heading3: {
+      fontFamily: FONTS.montserrat,
+      fontWeight: FONT_WEIGHTS.semibold,
+      fontSize: "20px",
+      lineHeight: "26px",
+      color: COLORS.text.primary,
+      display: "block",
     },
     heading5: {
       fontFamily: FONTS.montserrat,
@@ -54,6 +64,7 @@ const baseTheme: ThemeOptions = {
       lineHeight: "24px",
       color: COLORS.natural.black,
       letterSpacing: "0%",
+      display: "block",
     },
     labal: {
       // Fixed typo from "labal"
@@ -63,6 +74,7 @@ const baseTheme: ThemeOptions = {
       lineHeight: "24px",
       color: COLORS.natural.darkBlack,
       letterSpacing: "-0.31px",
+      display: "block",
     },
     bodyMeduiemLight: {
       fontFamily: FONTS.lexendDeca,
@@ -70,6 +82,7 @@ const baseTheme: ThemeOptions = {
       fontSize: "16px",
       lineHeight: "22px",
       color: COLORS.gray.main,
+      display: "block",
     },
     bodyMedium: {
       fontFamily: FONTS.lexendDeca,
@@ -77,6 +90,7 @@ const baseTheme: ThemeOptions = {
       fontSize: "16px",
       lineHeight: "22px",
       color: COLORS.natural[25],
+      display: "block",
     },
     bodyMediumLarge: {
       fontFamily: FONTS.lexendDeca,
@@ -84,6 +98,7 @@ const baseTheme: ThemeOptions = {
       fontSize: "18px",
       lineHeight: "26px",
       color: COLORS.text.primary,
+      display: "block",
     },
     bodySmall: {
       fontFamily: FONTS.lexendDeca,
@@ -91,6 +106,7 @@ const baseTheme: ThemeOptions = {
       fontSize: "14px",
       lineHeight: "20px",
       color: COLORS.natural[60],
+      display: "block",
     },
     bodySmallLight: {
       fontFamily: FONTS.lexendDeca,
@@ -98,12 +114,14 @@ const baseTheme: ThemeOptions = {
       fontSize: "14px",
       lineHeight: "20px",
       color: COLORS.text.secondary,
+      display: "block",
     },
     labelSmallLight: {
       fontFamily: FONTS.lexendDeca,
       fontWeight: FONT_WEIGHTS.light,
       fontSize: "12px",
       color: COLORS.text.primary,
+      display: "block",
     },
     buttonPrimary: {
       fontFamily: FONTS.montserrat,

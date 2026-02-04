@@ -14,6 +14,8 @@ import {
   TagsContainer,
   RailsAndCurationContainer,
   CreateRailsCurationContainer,
+  OrganizationsContainer,
+  OrganizationsDetailContainer,
 } from "@src/features";
 import EmailVerificationContainer from "@src/features/auth/containers/EmailVerificationContainer";
 import SetPasswordContainer from "@src/features/auth/containers/SetPasswordContainer";
@@ -58,6 +60,11 @@ function Routes() {
       <Route
         path={ROUTES.createRailsCuration}
         element={<CreateRailsCurationContainer />}
+      />
+      <Route path={ROUTES.organizations} element={<OrganizationsContainer />} />
+      <Route
+        path={ROUTES.organizationDetail}
+        element={<OrganizationsDetailContainer />}
       />
       <Route
         path={ROUTES.adminManagement}

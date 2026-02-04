@@ -5,8 +5,8 @@ interface ButtonTypes extends ButtonProps {
   title?: string;
   textColor?: string;
   background?: string;
-  width?: string | number;
-  active?: boolean; // Add active prop
+  width?: string | number | Record<string, string | number>;
+  active?: boolean;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
@@ -64,12 +64,13 @@ const CustomButton = ({
           },
         }),
         ...(variant === "outlined" && {
-          border: `1px solid ${active
-            ? background
+          border: `1px solid ${
+            active
               ? background
-              : COLORS.primary.main
-            : COLORS.natural[100]
-            }`,
+                ? background
+                : COLORS.primary.main
+              : COLORS.natural[100]
+          }`,
           color: active
             ? textColor
               ? textColor

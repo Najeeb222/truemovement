@@ -1,5 +1,5 @@
 import type { Column } from "@src/shared/components/DynamicTable/DynamicTable";
-import type { ProgramRow } from "@src/types";
+import type { ProgramRow, RailRow, OrganizationRow } from "@src/types";
 
 export const cardData = [
   {
@@ -155,7 +155,7 @@ export const AdminTableRows = [
     date: "12/01/2025",
   },
 ];
-export const RailColumns: Column<ProgramRow>[] = [
+export const RailColumns: Column<RailRow>[] = [
   { key: "title", label: "Rail Name", type: "text" },
   { key: "Items", label: "Items", type: "text" },
   // { key: "role", label: "Role", type: "role" },
@@ -164,7 +164,7 @@ export const RailColumns: Column<ProgramRow>[] = [
   // { key: "date", label: "Created", type: "date" },
   { key: "actions", label: "", type: "actions" },
 ];
-export const RailRows: ProgramRow[] = [
+export const RailRows: RailRow[] = [
   {
     title: "Sarah Johnson",
     Items: "12 items",
@@ -178,6 +178,32 @@ export const RailRows: ProgramRow[] = [
   {
     title: "Emily Davis",
     Items: "15 items",
+    status: "Active",
+  },
+];
+export const OrganizationColumns: Column<OrganizationRow>[] = [
+  { key: "Organization", label: "Organization", type: "text" },
+  { key: "activeCodes", label: "Active Codes", type: "date" },
+  { key: "members", label: "Members", type: "date" },
+  { key: "status", label: "Status", type: "status" },
+];
+export const OrganizationRows: OrganizationRow[] = [
+  {
+    Organization: "Sarah Johnson",
+    members: 2343,
+    activeCodes: 3,
+    status: "Active",
+  },
+  {
+    Organization: "Michael Brown",
+    members: 234,
+    activeCodes: 5,
+    status: "Archived",
+  },
+  {
+    Organization: "Emily Davis",
+    members: 23,
+    activeCodes: 2,
     status: "Active",
   },
 ];

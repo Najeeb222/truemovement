@@ -2,15 +2,12 @@ import {
   Dialog,
   DialogTitle,
   DialogContent,
-  // DialogActions,
   IconButton,
   Typography,
-  // Box,
   Stack,
 } from "@mui/material";
 import { Close } from "@mui/icons-material";
 import { COLORS } from "@src/constant";
-// import { CustomButton } from "@src/shared/components";
 
 interface CustomModalProps {
   open: boolean;
@@ -18,7 +15,6 @@ interface CustomModalProps {
   title: string;
   subtitle?: string;
   children?: React.ReactNode;
-
   maxWidth?: "xs" | "sm" | "md" | "lg" | "xl";
 }
 
@@ -28,8 +24,6 @@ const CustomModal = ({
   title,
   subtitle,
   children,
-  //   primaryAction,
-  //   secondaryAction,
   maxWidth = "sm",
 }: CustomModalProps) => {
   return (
@@ -41,14 +35,13 @@ const CustomModal = ({
       PaperProps={{
         sx: {
           borderRadius: "10px",
-          padding: "24px",
+          padding: { xs: "10px 0", sm: "24px" },
         },
       }}
     >
       <DialogTitle
         sx={{
           m: 0,
-          //   p: 2,
           display: "flex",
           justifyContent: "space-between",
           alignItems: "flex-start",
@@ -74,7 +67,7 @@ const CustomModal = ({
           <Close />
         </IconButton>
       </DialogTitle>
-      <DialogContent sx={{ p: 2, mt:'16px' }}>{children}</DialogContent>
+      <DialogContent sx={{ p: 2, mt: "16px" }}>{children}</DialogContent>
     </Dialog>
   );
 };

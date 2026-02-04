@@ -5,6 +5,7 @@ declare module "@mui/material/styles" {
   interface TypographyVariants {
     heading1: React.CSSProperties;
     heading2: React.CSSProperties;
+    heading3: React.CSSProperties;
     heading5: React.CSSProperties;
     labal: React.CSSProperties;
     bodyMeduiemLight: React.CSSProperties;
@@ -18,8 +19,9 @@ declare module "@mui/material/styles" {
 
   // Allow using these variants in `sx` prop and `theme.typography`
   interface TypographyVariantsOptions {
-     heading1?: React.CSSProperties;
+    heading1?: React.CSSProperties;
     heading2?: React.CSSProperties;
+    heading3?: React.CSSProperties;
     heading5?: React.CSSProperties;
     labal?: React.CSSProperties;
     bodyMeduiemLight?: React.CSSProperties;
@@ -67,6 +69,7 @@ declare module "@mui/material/Typography" {
   interface TypographyPropsVariantOverrides {
     heading1: true;
     heading2: true;
+    heading3: true;
     heading5: true;
     labal: true;
     bodyMeduiemLight: true;

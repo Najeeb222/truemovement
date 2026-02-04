@@ -51,6 +51,7 @@ interface DynamicTableProps<T> {
   rowMenu?: (row: T) => RowMenuItem<T>[]; // function to provide custom menu per row
   onEdit?: (row: T) => void;
   onDelete?: (row: T) => void;
+  onRowClick?: (row: T) => void;
 }
 
 /* ================= COMPONENT ================= */
@@ -61,6 +62,7 @@ export default function DynamicTable<T extends Record<string, unknown>>({
   rowMenu,
   onEdit,
   onDelete,
+  onRowClick,
 }: DynamicTableProps<T>) {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [selectedRow, setSelectedRow] = useState<T | null>(null);
@@ -176,7 +178,18 @@ export default function DynamicTable<T extends Record<string, unknown>>({
 
           <TableBody>
             {data.map((row, rowIndex) => (
-              <TableRow key={rowIndex}>
+              <TableRow
+                key={rowIndex}
+                onClick={() => onRowClick?.(row)}
+                sx={{
+                  cursor: onRowClick ? "pointer" : "default",
+                  "&:hover": {
+                    backgroundColor: onRowClick
+                      ? COLORS.natural[50] || "#f9f9f9"
+                      : "inherit",
+                  },
+                }}
+              >
                 {columns.map((col) => (
                   <TableCell key={String(col.key)} sx={{ py: "4px" }}>
                     {renderCell(col, row)}

@@ -22,6 +22,7 @@ export const ROUTES = {
   announcements: "/announcements",
   tags: "/tags",
   organizations: "/organizations",
+  organizationDetail: "/organization-detail",
   analytics: "/analytics",
   adminManagement: "/admin-management",
   settings: "/settings",
