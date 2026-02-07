@@ -290,7 +290,7 @@ const baseTheme: ThemeOptions = {
 
           "&.Mui-selected": {
             color: COLORS.text.primary, // active tab text color
-            backgroundColor: COLORS.secondary.main, // active tab background color
+            backgroundColor: COLORS.primary.main, // active tab background color
           },
 
           // "&:hover": {

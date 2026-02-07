@@ -24,18 +24,37 @@ import {
   SessionsIcon,
   TagsIcon,
 } from "@src/constant";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const Sidebar = ({ onItemClick }: { onItemClick?: () => void }) => {
   const location = useLocation();
   const navigate = useNavigate();
-  const [expandedMenu, setExpandedMenu] = useState<string | null>(null);
 
   const subMenuItems = [
-    { title: "Sessions", icon: SessionsIcon, path: ROUTES.sessions },
-    { title: "Programs", icon: ProgramsIcon, path: ROUTES.programs },
-    { title: "Educational", icon: EducationalIcon, path: ROUTES.educational },
-    { title: "Rails & Curation", icon: RailsIcon, path: ROUTES.railsCuration },
+    {
+      title: "Sessions",
+      icon: SessionsIcon,
+      path: ROUTES.sessions,
+      createPath: ROUTES.createSession,
+    },
+    {
+      title: "Programs",
+      icon: ProgramsIcon,
+      path: ROUTES.programs,
+      createPath: ROUTES.createProgram,
+    },
+    {
+      title: "Educational",
+      icon: EducationalIcon,
+      path: ROUTES.educational,
+      createPath: ROUTES.createEducation,
+    },
+    {
+      title: "Rails & Curation",
+      icon: RailsIcon,
+      path: ROUTES.railsCuration,
+      createPath: ROUTES.createRailsCuration,
+    },
     {
       title: "Announcements",
       icon: AnnouncementIcon,
@@ -66,16 +85,14 @@ const Sidebar = ({ onItemClick }: { onItemClick?: () => void }) => {
     { title: "Settings", icon: SettingsIcon, path: ROUTES.settings },
   ];
 
-  // Check if any submenu is active or if current path starts with sub-item paths
-  const isAnySubMenuActive = subMenuItems.some((item) =>
-    location.pathname.startsWith(item.path),
-  );
+  const subItemPaths = subMenuItems.map((item) => item.path);
+  const isContentLibraryActive =
+    subItemPaths.some((path) => location.pathname.startsWith(path)) ||
+    location.pathname.includes("create-");
 
-  useEffect(() => {
-    if (isAnySubMenuActive || location.pathname.includes("create-")) {
-      setExpandedMenu("Content Library");
-    }
-  }, [location.pathname, isAnySubMenuActive]);
+  const [expandedMenu, setExpandedMenu] = useState<string | null>(
+    isContentLibraryActive ? "Content Library" : null,
+  );
 
   const handleMenuToggle = (title: string, defaultPath?: string) => {
     if (title === "Content Library" && !expandedMenu) {
@@ -238,9 +255,10 @@ const Sidebar = ({ onItemClick }: { onItemClick?: () => void }) => {
                 <Collapse in={isExpanded} timeout="auto" unmountOnExit>
                   <List sx={{ ml: "14px" }}>
                     {page.submenu.map((subItem: any) => {
-                      const isSubActive = location.pathname.startsWith(
-                        subItem.path,
-                      );
+                      const isSubActive =
+                        location.pathname.startsWith(subItem.path) ||
+                        (subItem.createPath &&
+                          location.pathname.startsWith(subItem.createPath));
                       const SubIcon = subItem.icon;
 
                       return (

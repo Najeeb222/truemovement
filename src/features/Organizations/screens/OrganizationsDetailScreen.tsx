@@ -9,14 +9,9 @@ import {
   Typography,
   ListItemIcon,
   Stack,
+  Container,
 } from "@mui/material";
-import {
-  ArchiveIcon,
-  COLORS,
-  EditIcon,
-  SettingsIcon,
-  TrashIcon,
-} from "@src/constant";
+import { COLORS, SettingsIcon } from "@src/constant";
 import {
   ContentLibraryCustomHeader,
   CustomButton,
@@ -38,7 +33,7 @@ const OrganizationsDetailScreen = () => {
     "edit" | "archive" | "delete" | null
   >(null);
 
-  const handleTabChange = (event: React.SyntheticEvent, newValue: string) => {
+  const handleTabChange = (_: React.SyntheticEvent, newValue: string) => {
     setActiveTab(newValue);
   };
 
@@ -143,34 +138,40 @@ const OrganizationsDetailScreen = () => {
         </MenuItem>
       </Menu>
 
-      <OrganizationInfoCard />
+      <Container
+        maxWidth={"lg"}
+        component={Stack}
+        spacing={{ xs: 2, sm: 2, md: 4 }}
+      >
+        <OrganizationInfoCard />
 
-      {/* Tabs */}
-      <Box sx={{}}>
-        <Tabs
-          value={activeTab}
-          onChange={handleTabChange}
-          sx={{ maxWidth: "420px" }}
-        >
-          <Tab
-            value={"accessCodes"}
-            sx={{ width: "140px" }}
-            label="Access Codes"
-          />
-          <Tab value={"members"} label="Members" sx={{ width: "140px" }} />
-          <Tab
-            value={"teamContent"}
-            label="Team Content"
-            sx={{ width: "140px" }}
-          />
-        </Tabs>
-      </Box>
+        {/* Tabs */}
+        <Box sx={{}}>
+          <Tabs
+            value={activeTab}
+            onChange={handleTabChange}
+            sx={{ maxWidth: "420px" }}
+          >
+            <Tab
+              value={"accessCodes"}
+              sx={{ width: "140px" }}
+              label="Access Codes"
+            />
+            <Tab value={"members"} label="Members" sx={{ width: "140px" }} />
+            <Tab
+              value={"teamContent"}
+              label="Team Content"
+              sx={{ width: "140px" }}
+            />
+          </Tabs>
+        </Box>
 
-      <Box sx={{ mt: 2 }}>
-        {activeTab === "accessCodes" && <AccessCodesTab />}
-        {activeTab === "members" && <MembersTab />}
-        {activeTab === "teamContent" && <TeamContentTab />}
-      </Box>
+        <Box sx={{ mt: 2 }}>
+          {activeTab === "accessCodes" && <AccessCodesTab />}
+          {activeTab === "members" && <MembersTab />}
+          {activeTab === "teamContent" && <TeamContentTab />}
+        </Box>
+      </Container>
 
       {/* ================= MODALS ================= */}
 

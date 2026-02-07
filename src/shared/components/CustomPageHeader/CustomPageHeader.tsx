@@ -14,13 +14,22 @@ const CustomPageHeader = ({
   return (
     <Box
       sx={{
+        // bgcolor: "red",
+        // margin: "200px",
         display: "flex",
         justifyContent: "space-between",
-        alignItems: "center",
-        mt: { xs: 8, md: 0 },
+        alignItems: { xs: "start", sm: "center" },
+
+        py: 2,
+        flexWrap: "wrap",
+        gap: 2,
       }}
     >
-      <Stack direction="column" spacing={"8px"}>
+      <Stack
+        direction="column"
+        spacing={"8px"}
+        sx={{ flex: { xs: "1 1 100%", sm: "1" } }}
+      >
         <Typography variant="heading2" gutterBottom>
           {title}
         </Typography>
@@ -28,7 +37,16 @@ const CustomPageHeader = ({
           {subtitle}
         </Typography>
       </Stack>
-      <Box>{children}</Box>
+      <Box
+        sx={{
+          width: { xs: "100%", sm: "auto" },
+          display: "flex",
+          justifyContent: { xs: "start", sm: "end" },
+          alignItems: "center",
+        }}
+      >
+        {children}
+      </Box>
     </Box>
   );
 };

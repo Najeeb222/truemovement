@@ -70,6 +70,7 @@ const AppLayout = ({
         sx={{
           flex: 1,
           p: disablePadding ? 0 : { xs: 2, sm: 3, md: 4 },
+          pt: disablePadding ? 0 : { xs: "64px", md: 0 },
           width: "100%",
           gap: "24px",
         }}

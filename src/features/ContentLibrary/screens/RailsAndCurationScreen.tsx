@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Add } from "@mui/icons-material";
-import { Box, Stack, Tab, Tabs, Typography } from "@mui/material";
+import { Box, Container, Stack, Tab, Tabs, Typography } from "@mui/material";
 
 import { COLORS, RailColumns, RailRows, ROUTES } from "@src/constant";
 import {
@@ -13,7 +13,7 @@ import {
 } from "@src/shared/components";
 import AppLayout from "@src/shared/components/AppLayout/AppLayout";
 import { useNavigate } from "react-router";
-import type { ProgramRow } from "@src/types";
+import type { ProgramRow, RailRow } from "@src/types";
 import { FormProvider, useForm } from "react-hook-form";
 
 const tabList = ["Rails", "Team Rails"];
@@ -82,8 +82,17 @@ const RailsAndCurationScreen = () => {
 
   return (
     <AppLayout>
-      <CustomPageHeader title="Rails & Curation" subtitle="Manage carousels" />
-      {/* <CustomButton
+      <Container
+        maxWidth={"lg"}
+        component={Stack}
+        spacing={{ xs: 2, sm: 2, md: 3 }}
+        disableGutters
+      >
+        <CustomPageHeader
+          title="Rails & Curation"
+          subtitle="Manage carousels"
+        />
+        {/* <CustomButton
           title="Create Tag"
           startIcon={<Add />}
           variant="contained"
@@ -97,86 +106,87 @@ const RailsAndCurationScreen = () => {
         />
       </CustomPageHeader> */}
 
-      {/* Tabs */}
-      <Box>
-        <Tabs
-          value={activeTab}
-          onChange={handleTabChange}
-          // variant="scrollable"
-          scrollButtons="auto"
-          sx={{ maxWidth: "700px" }}
-        >
-          {tabList.map((label, index) => (
-            <Tab sx={{ width: "100%" }} key={index} label={label} />
-          ))}
-        </Tabs>
-      </Box>
+        {/* Tabs */}
+        <Box>
+          <Tabs
+            value={activeTab}
+            onChange={handleTabChange}
+            // variant="scrollable"
+            scrollButtons="auto"
+            sx={{ maxWidth: "700px" }}
+          >
+            {tabList.map((label, index) => (
+              <Tab sx={{ width: "100%" }} key={index} label={label} />
+            ))}
+          </Tabs>
+        </Box>
 
-      <Box
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          flexWrap: "wrap",
-        }}
-      >
-        <Typography variant="bodySmallLight">
-          Featured rails appear on the mobile home screen. Drag to reorder -
-          changes are live on next app refresh.
-        </Typography>
-        <CustomButton
-          title="Create Rail"
-          startIcon={<Add />}
-          variant="contained"
-          background={COLORS.primary.main}
-          active
-          onClick={() => navigate(ROUTES.createRailsCuration)}
-        />
-      </Box>
-      {/* Tab Content */}
-      <Box sx={{ mt: 3 }}>
-        <DynamicTable<ProgramRow>
-          columns={RailColumns}
-          data={RailRows}
-          onEdit={handleEdit}
-          onDelete={handleDelete}
-          rowMenu={(row) => [
-            {
-              title: "Edit",
-              icon: (
-                <img
-                  src="/assets/icons/editIcon.svg"
-                  alt=""
-                  style={{ width: 16, height: 16 }}
-                />
-              ),
-              onClick: () => openModal("edit", row),
-            },
-            {
-              title: "Deactivate",
-              icon: (
-                <img
-                  src="/assets/icons/closeIcon.svg"
-                  alt=""
-                  style={{ width: 16, height: 16 }}
-                />
-              ),
-              onClick: () => openModal("deactivate", row),
-            },
-            {
-              title: "Delete",
-              icon: (
-                <img
-                  src="/assets/icons/trashIcon.svg"
-                  alt=""
-                  style={{ width: 16, height: 16 }}
-                />
-              ),
-              onClick: () => openModal("delete", row),
-            },
-          ]}
-        />
-      </Box>
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            flexWrap: "wrap",
+          }}
+        >
+          <Typography variant="bodySmallLight">
+            Featured rails appear on the mobile home screen. Drag to reorder -
+            changes are live on next app refresh.
+          </Typography>
+          <CustomButton
+            title="Create Rail"
+            startIcon={<Add />}
+            variant="contained"
+            background={COLORS.primary.main}
+            active
+            onClick={() => navigate(ROUTES.createRailsCuration)}
+          />
+        </Box>
+        {/* Tab Content */}
+        <Box sx={{ mt: 3 }}>
+          <DynamicTable<RailRow>
+            columns={RailColumns}
+            data={RailRows}
+            onEdit={handleEdit}
+            onDelete={handleDelete}
+            rowMenu={(row) => [
+              {
+                title: "Edit",
+                icon: (
+                  <img
+                    src="/assets/icons/editIcon.svg"
+                    alt=""
+                    style={{ width: 16, height: 16 }}
+                  />
+                ),
+                onClick: () => openModal("edit", row),
+              },
+              {
+                title: "Deactivate",
+                icon: (
+                  <img
+                    src="/assets/icons/closeIcon.svg"
+                    alt=""
+                    style={{ width: 16, height: 16 }}
+                  />
+                ),
+                onClick: () => openModal("deactivate", row),
+              },
+              {
+                title: "Delete",
+                icon: (
+                  <img
+                    src="/assets/icons/trashIcon.svg"
+                    alt=""
+                    style={{ width: 16, height: 16 }}
+                  />
+                ),
+                onClick: () => openModal("delete", row),
+              },
+            ]}
+          />
+        </Box>
+      </Container>
 
       {/* Modals */}
       <CreateTagModal

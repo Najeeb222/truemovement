@@ -10,12 +10,12 @@ import AppLayout from "@src/shared/components/AppLayout/AppLayout";
 import RailCard from "../components/RailCard";
 import {
   Box,
-  Divider,
   Grid,
   Stack,
   Tab,
   Tabs,
   Typography,
+  Container,
 } from "@mui/material";
 import RailSetup from "../components/RailSetup";
 import { COLORS } from "@src/constant";
@@ -40,7 +40,7 @@ const CreateRailsCurationScreen = () => {
           width={"290px"}
         />
       </ContentLibraryCustomHeader>
-      <Box sx={{ p: { xs: 2, sm: 3, md: 4 } }}>
+      <Container maxWidth={"lg"} sx={{ p: { xs: 2, sm: 3, md: 4 } }}>
         <Grid container spacing={2}>
           <Grid size={{ xs: 12, sm: 6, lg: 4 }}>
             <RailSetup />
@@ -239,7 +239,7 @@ const CreateRailsCurationScreen = () => {
             </Stack>
           </Grid>
         </Grid>
-      </Box>
+      </Container>
     </AppLayout>
   );
 };

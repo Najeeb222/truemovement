@@ -28,7 +28,6 @@ const ContentLibraryCustomHeader = ({
         borderBottom: `1px solid ${COLORS.natural[100]}`,
         flexWrap: "wrap",
         gap: 2,
-        mt: { xs: 8, md: "0" },
       }}
     >
       <Box

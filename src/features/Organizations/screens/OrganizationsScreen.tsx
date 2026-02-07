@@ -11,7 +11,7 @@ import {
 import AppLayout from "@src/shared/components/AppLayout/AppLayout";
 import type { OrganizationRow } from "@src/types";
 import { useState } from "react";
-import { Box, Stack, Typography } from "@mui/material";
+import { Stack, Typography, Box, Container } from "@mui/material";
 import { useNavigate } from "react-router";
 import { ROUTES } from "@src/constant";
 
@@ -26,24 +26,31 @@ const OrganizationsScreen = () => {
 
   return (
     <AppLayout>
-      <CustomPageHeader
-        title="Organizations"
-        subtitle="Manage team organizations and their access"
+      <Container
+        maxWidth={"lg"}
+        component={Stack}
+        spacing={{ xs: 2, sm: 2, md: 4 }}
+        disableGutters
       >
-        <CustomButton
-          title="Create Organization"
-          startIcon={<Add />}
-          variant="contained"
-          active
-          onClick={openModal}
-        />
-      </CustomPageHeader>
+        <CustomPageHeader
+          title="Organizations"
+          subtitle="Manage team organizations and their access"
+        >
+          <CustomButton
+            title="Create Organization"
+            startIcon={<Add />}
+            variant="contained"
+            active
+            onClick={openModal}
+          />
+        </CustomPageHeader>
 
-      <DynamicTable<OrganizationRow>
-        columns={OrganizationColumns}
-        data={OrganizationRows}
-        onRowClick={() => navigate(ROUTES.organizationDetail)}
-      />
+        <DynamicTable<OrganizationRow>
+          columns={OrganizationColumns}
+          data={OrganizationRows}
+          onRowClick={() => navigate(ROUTES.organizationDetail)}
+        />
+      </Container>
 
       {/* ================= CREATE ORGANIZATION MODAL ================= */}
 

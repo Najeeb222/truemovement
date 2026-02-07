@@ -10,7 +10,7 @@ import CustomTagsCategories from "../components/CustomTagsCategories";
 import CustomnstructionsAndSafety from "../components/CustomnstructionsAndSafety";
 import CustomOrganizationAccess from "../components/CustomOrganizationAccess";
 import CustomPublishingOptions from "../components/CustomPublishingOptions";
-import { Box, Stack } from "@mui/material";
+import { Box, Stack, Container } from "@mui/material";
 import { COLORS } from "@src/constant";
 
 const CreateProgramScreen = () => {
@@ -24,7 +24,13 @@ const CreateProgramScreen = () => {
           subtitle="Add a new program to the content library"
         />
 
-        <Stack sx={{ p: { xs: 2, sm: 3, md: 4 } }}>
+        <Container
+          maxWidth={"lg"}
+          component={Stack}
+          spacing={{ xs: 2, sm: 2, md: 4 }}
+          sx={{ px: { xs: 2, sm: 3, md: 4 } }}
+          disableGutters
+        >
           <CustomBasicInformation />
           <CustomUpload
             name="programThumbnail"
@@ -41,6 +47,9 @@ const CreateProgramScreen = () => {
               display: "flex",
               alignItems: "center",
               justifyContent: "space-between",
+              flexDirection: { xs: "column", sm: "row" },
+              gap: 2,
+              mt: 2,
             }}
           >
             <CustomButton
@@ -48,18 +57,27 @@ const CreateProgramScreen = () => {
               variant="outlined"
               active
               background="transparent"
+              width={{ xs: "100%", sm: "auto" }}
             />
-            <Stack direction={"row"} sx={{ gap: "16px" }}>
+            <Stack
+              direction={{ xs: "column", sm: "row" }}
+              sx={{ gap: "16px", width: { xs: "100%", sm: "auto" } }}
+            >
               <CustomButton
                 title={"Save as Draft"}
                 variant="outlined"
                 background={COLORS.primary.main}
                 active
+                width={{ xs: "100%", sm: "auto" }}
               />
-              <CustomButton title="Publish" variant="contained" />
+              <CustomButton
+                title="Publish"
+                variant="contained"
+                width={{ xs: "100%", sm: "auto" }}
+              />
             </Stack>
           </Box>
-        </Stack>
+        </Container>
       </FormProvider>
     </AppLayout>
   );

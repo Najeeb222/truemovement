@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Add } from "@mui/icons-material";
-import { Box, Stack, Tab, Tabs } from "@mui/material";
+import { Box, Stack, Tab, Tabs, Container } from "@mui/material";
 
 import { COLORS, tagsColumns, tagsRow } from "@src/constant";
 import {
@@ -54,48 +54,55 @@ const TagsScreen = () => {
 
   return (
     <AppLayout>
-      <CustomPageHeader
-        title="Tags"
-        subtitle="Manage tags for categorizing sessions and programs"
+      <Container
+        maxWidth={"lg"}
+        component={Stack}
+        spacing={{ xs: 2, sm: 2, md: 4 }}
+        disableGutters
       >
-        <CustomButton
-          title="Create Tag"
-          startIcon={<Add />}
-          variant="contained"
-          active
-          background={COLORS.primary.main}
-          onClick={() => {
-            setIsEdit(false);
-            setSelectedTag(null);
-            setCreateModalOpen(true);
-          }}
-        />
-      </CustomPageHeader>
-
-      {/* Tabs */}
-      <Box>
-        <Tabs
-          value={activeTab}
-          onChange={handleTabChange}
-          // variant="scrollable"
-          scrollButtons="auto"
-          sx={{ maxWidth: "810px" }}
+        <CustomPageHeader
+          title="Tags"
+          subtitle="Manage tags for categorizing sessions and programs"
         >
-          {tabList.map((label, index) => (
-            <Tab sx={{ width: "160px" }} key={index} label={label} />
-          ))}
-        </Tabs>
-      </Box>
+          <CustomButton
+            title="Create Tag"
+            startIcon={<Add />}
+            variant="contained"
+            active
+            background={COLORS.primary.main}
+            onClick={() => {
+              setIsEdit(false);
+              setSelectedTag(null);
+              setCreateModalOpen(true);
+            }}
+          />
+        </CustomPageHeader>
 
-      {/* Tab Content */}
-      <Box sx={{ mt: 3 }}>
-        <DynamicTable
-          columns={tagsColumns}
-          data={tagsRow}
-          onEdit={handleEdit}
-          onDelete={handleDelete}
-        />
-      </Box>
+        {/* Tabs */}
+        <Box>
+          <Tabs
+            value={activeTab}
+            onChange={handleTabChange}
+            // variant="scrollable"
+            scrollButtons="auto"
+            sx={{ maxWidth: "810px" }}
+          >
+            {tabList.map((label, index) => (
+              <Tab sx={{ width: "160px" }} key={index} label={label} />
+            ))}
+          </Tabs>
+        </Box>
+
+        {/* Tab Content */}
+        <Box sx={{ mt: 3 }}>
+          <DynamicTable
+            columns={tagsColumns}
+            data={tagsRow}
+            onEdit={handleEdit}
+            onDelete={handleDelete}
+          />
+        </Box>
+      </Container>
 
       {/* Modals */}
       <CreateTagModal

@@ -159,7 +159,17 @@ export const TeamInfoColumns: Column<ProgramRow>[] = [
   { key: "longestStreak", label: "Longest Streak", type: "date" },
   { key: "badges", label: "Badges", type: "badges" },
 ];
-export const AdminTableColumns = [
+export interface AdminRow {
+  [key: string]: any;
+  name: string;
+  email: string;
+  role: string;
+  status: string;
+  lastLogin: string;
+  date: string;
+}
+
+export const AdminTableColumns: Column<AdminRow>[] = [
   { key: "name", label: "Name", type: "text" },
   { key: "email", label: "Email", type: "text" },
   { key: "role", label: "Role", type: "role" },
@@ -275,6 +285,16 @@ export const analyticsSelect = [
   { value: "globalFitnessCo", label: "Global Fitness Co" },
   { value: "wellnessPartners", label: "Wellness Partners" },
 ];
+
+export const datePresets = [
+  { value: "today", label: "Today" },
+  { value: "yesterday", label: "Yesterday" },
+  { value: "last7Days", label: "Last 7 Days" },
+  { value: "last30Days", label: "Last 30 Days" },
+  { value: "thisMonth", label: "This Month" },
+  { value: "lastMonth", label: "Last Month" },
+  { value: "custom", label: "Custom Range" },
+];
 export const publishingOptions = [
   {
     value: "draft",
@@ -288,6 +308,43 @@ export const publishingOptions = [
     value: "published",
     label: "Published",
   },
+];
+
+export const contentTypeOptions = [
+  { value: "sessions", label: "Sessions" },
+  { value: "programs", label: "Programs" },
+  { value: "education", label: "Education" },
+];
+
+export const sportsOptions = [
+  { value: "hockey", label: "Hockey" },
+  { value: "football", label: "Football" },
+  { value: "baseball", label: "Baseball" },
+  { value: "soccer", label: "Soccer" },
+  { value: "lacrosse", label: "Lacrosse" },
+];
+
+export const painPointsOptions = [
+  { value: "lowerBack", label: "Lower Back" },
+  { value: "hamstring", label: "Hamstring" },
+  { value: "neckShoulder", label: "Neck & Shoulder" },
+  { value: "calf", label: "Calf" },
+  { value: "fullBody", label: "Full Body" },
+];
+
+export const propsOptions = [
+  { value: "noProps", label: "No Props" },
+  { value: "foamRoller", label: "Foam Roller" },
+  { value: "mat", label: "Mat" },
+  { value: "benderBall", label: "Bender Ball" },
+  { value: "stabilityBall", label: "Stability Ball" },
+];
+
+export const durationOptions = [
+  { value: "0-5", label: "0-5 min" },
+  { value: "5-10", label: "5-10 min" },
+  { value: "10-15", label: "10-15 min" },
+  { value: "20-25", label: "20-25 min" },
 ];
 
 export interface TagRow {

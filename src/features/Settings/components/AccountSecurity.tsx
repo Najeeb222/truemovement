@@ -1,4 +1,11 @@
-import { Box, Divider, Stack, Typography, useTheme, useMediaQuery } from "@mui/material";
+import {
+  Box,
+  Divider,
+  Stack,
+  Typography,
+  useTheme,
+  useMediaQuery,
+} from "@mui/material";
 import { COLORS } from "@src/constant";
 import { CustomButton, CustomTextField } from "@src/shared/components";
 import { FormProvider, useForm } from "react-hook-form";
@@ -16,6 +23,7 @@ const AccountSecurity = () => {
         borderRadius: "14px",
         width: "100%",
         boxSizing: "border-box",
+        background: COLORS.surface.white,
       }}
     >
       <FormProvider {...methods}>
@@ -28,7 +36,7 @@ const AccountSecurity = () => {
           }}
           borderBottom={`1px solid ${COLORS.natural[100]}`}
         >
-          <Typography variant={ "bodyMeduiemLight"} color={COLORS.text.primary}>
+          <Typography variant={"bodyMeduiemLight"} color={COLORS.text.primary}>
             Account Security
           </Typography>
         </Box>
@@ -68,7 +76,7 @@ const AccountSecurity = () => {
                   placeholder="current email"
                   type="email"
                   name="email"
-                  width={isSm?"100%":'519px'}
+                  width={isSm ? "100%" : "519px"}
                 />
                 <CustomButton
                   title="Edit Email"
@@ -86,10 +94,10 @@ const AccountSecurity = () => {
           {/* Password Section */}
           <Box sx={{ display: "flex", flexDirection: "column", gap: "16px" }}>
             <Box sx={{ display: "flex", flexDirection: "column", gap: "4px" }}>
-              <Typography variant={ "bodySmall"} color={COLORS.text.primary}>
+              <Typography variant={"bodySmall"} color={COLORS.text.primary}>
                 Password
               </Typography>
-              <Typography variant={ "bodySmallLight"}>
+              <Typography variant={"bodySmallLight"}>
                 Update your password to keep your account secure
               </Typography>
             </Box>
@@ -107,10 +115,10 @@ const AccountSecurity = () => {
           {/* Sign Out Section */}
           <Box sx={{ display: "flex", flexDirection: "column", gap: "16px" }}>
             <Box sx={{ display: "flex", flexDirection: "column", gap: "4px" }}>
-              <Typography variant={ "bodySmall"} color={COLORS.text.primary}>
+              <Typography variant={"bodySmall"} color={COLORS.text.primary}>
                 Sign Out
               </Typography>
-              <Typography variant={ "bodySmallLight"}>
+              <Typography variant={"bodySmallLight"}>
                 End your current session and return to login
               </Typography>
             </Box>

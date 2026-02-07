@@ -1,5 +1,5 @@
 import { Add } from "@mui/icons-material";
-import { Stack } from "@mui/material";
+import { Stack, Container } from "@mui/material";
 import { columns, rows } from "@src/constant";
 import {
   CustomButton,
@@ -18,9 +18,10 @@ import CustomPublishingOptions from "../components/CustomPublishingOptions";
 import CustomOrganizationAccess from "../components/CustomOrganizationAccess";
 import CustomTagsCategories from "../components/CustomTagsCategories";
 import { useNavigate } from "react-router";
+import { COLORS } from "@src/constant";
 
 /* ================= TYPES ================= */
-type ModalType = "edit" | "archive" | "delete" | null;
+type ModalType = "edit" | "deactivate" | "delete" | null;
 
 const SessionScreen = () => {
   const methods = useForm({
@@ -65,7 +66,12 @@ const SessionScreen = () => {
   return (
     <AppLayout>
       <FormProvider {...methods}>
-        <Stack gap={"24px"}>
+        <Container
+          maxWidth={"lg"}
+          component={Stack}
+          spacing={{ xs: 2, sm: 2, md: 4 }}
+          disableGutters
+        >
           <CustomPageHeader
             title="Sessions"
             subtitle="Manage and create sessions"
@@ -101,15 +107,15 @@ const SessionScreen = () => {
                 onClick: () => openModal("edit", row),
               },
               {
-                title: "Archive",
+                title: "Deactivate",
                 icon: (
                   <img
-                    src="/assets/icons/folderIcon.svg"
+                    src="/assets/icons/closeIcon.svg"
                     alt=""
                     style={{ width: 16, height: 16 }}
                   />
                 ),
-                onClick: () => openModal("archive", row),
+                onClick: () => openModal("deactivate", row),
               },
               {
                 title: "Delete",
@@ -124,13 +130,7 @@ const SessionScreen = () => {
               },
             ]}
           />
-
-          <CustomTagsCategories />
-
-          <CustomnstructionsAndSafety />
-          <CustomPublishingOptions />
-          <CustomOrganizationAccess />
-        </Stack>
+        </Container>
 
         {/* ================= EDIT MODAL ================= */}
         {modalType === "edit" && selectedRow && (
@@ -175,13 +175,13 @@ const SessionScreen = () => {
           </CustomModal>
         )}
 
-        {/* ================= ARCHIVE MODAL ================= */}
-        {modalType === "archive" && selectedRow && (
+        {/* ================= DEACTIVATE MODAL ================= */}
+        {modalType === "deactivate" && selectedRow && (
           <CustomModal
             open
             onClose={closeModal}
-            title="Archive Session"
-            subtitle="Are you sure you want to archive this session?"
+            title="Deactivate Content"
+            subtitle="Are you sure you want to Deactivate this content? Users will not access to this content anymore. You can publish it again anytime."
           >
             <Stack direction="row" justifyContent="end" gap="8px">
               <CustomButton
@@ -191,7 +191,11 @@ const SessionScreen = () => {
                 width="99px"
                 active
               />
-              <CustomButton title="Archive" variant="contained" active />
+              <CustomButton
+                title="Deactivate Session"
+                variant="contained"
+                active
+              />
             </Stack>
           </CustomModal>
         )}
@@ -201,8 +205,8 @@ const SessionScreen = () => {
           <CustomModal
             open
             onClose={closeModal}
-            title="Delete Session"
-            subtitle="This action cannot be undone. Are you sure?"
+            title="Delete Content"
+            subtitle="Are you sure you want to Delete this content? Users and you will not access to this content anymore. "
           >
             <Stack direction="row" justifyContent="end" gap="8px">
               <CustomButton
@@ -211,8 +215,15 @@ const SessionScreen = () => {
                 onClick={closeModal}
                 width="99px"
                 active
+                background={COLORS.error.button}
               />
-              <CustomButton title="Delete" variant="contained" active />
+              <CustomButton
+                title="Delete"
+                variant="contained"
+                active
+                background={COLORS.error.button}
+                textColor={COLORS.surface.white}
+              />
             </Stack>
           </CustomModal>
         )}
