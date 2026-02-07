@@ -1,5 +1,6 @@
 export interface ProgramRow extends Record<string, unknown> {
-  title: string;
+  title?: string;
+  user?: string;
   sport?: string;
   painPoint?: string;
   props?: string;
@@ -12,6 +13,7 @@ export interface ProgramRow extends Record<string, unknown> {
     | "Active"
     | "Inactive";
   date?: string;
+  streak?: string;
 }
 
 export interface RailRow extends Record<string, unknown> {

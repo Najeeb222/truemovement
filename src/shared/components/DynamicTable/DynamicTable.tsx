@@ -16,7 +16,7 @@ import {
   Stack,
   Box,
 } from "@mui/material";
-import { COLORS } from "@src/constant";
+import { COLORS, FireIcon, UserBadgeIcon } from "@src/constant";
 import { StatusChip, CustomPill } from "@src/shared/components";
 import type { ReactNode } from "react";
 
@@ -29,7 +29,9 @@ export type ColumnType =
   | "actions"
   | "date"
   | "role"
-  | "tagActions";
+  | "tagActions"
+  | "streak"
+  | "badges";
 
 export interface Column<T> {
   key: keyof T | "actions";
@@ -97,6 +99,20 @@ export default function DynamicTable<T extends Record<string, unknown>>({
         );
       case "status":
         return <StatusChip status={String(value)} />;
+      case "badges":
+        return (
+          <Stack direction={"row"} alignItems={"center"} gap={"6px"}>
+            <UserBadgeIcon />
+            <Typography>{String(value)} days</Typography>
+          </Stack>
+        );
+      case "streak":
+        return (
+          <Stack direction={"row"} alignItems={"center"} gap={"6px"}>
+            <FireIcon />
+            <Typography>{String(value)} days</Typography>
+          </Stack>
+        );
       case "actions":
         return (
           <IconButton onClick={(e) => handleMenuOpen(e, row)}>

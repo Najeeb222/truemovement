@@ -30,6 +30,25 @@ const baseTheme: ThemeOptions = {
   breakpoints: {
     values: BREAKPOINTS,
   },
+  palette: {
+    primary: {
+      main: COLORS.primary.main,
+      dark: COLORS.primary.dark,
+      light: COLORS.primary.light,
+    },
+    secondary: {
+      main: COLORS.secondary.main,
+      dark: COLORS.secondary.dark,
+      light: COLORS.secondary.light,
+    },
+    error: {
+      main: COLORS.error.main,
+    },
+    text: {
+      primary: COLORS.text.primary,
+      secondary: COLORS.text.secondary,
+    },
+  },
   typography: {
     fontFamily: [FONTS.default].join(","),
     heading1: {
@@ -271,7 +290,7 @@ const baseTheme: ThemeOptions = {
 
           "&.Mui-selected": {
             color: COLORS.text.primary, // active tab text color
-            backgroundColor: COLORS.primary.main, // active tab background color
+            backgroundColor: COLORS.secondary.main, // active tab background color
           },
 
           // "&:hover": {
@@ -297,7 +316,7 @@ const baseTheme: ThemeOptions = {
             color: "#fff",
 
             "& + .MuiSwitch-track": {
-              backgroundColor: COLORS.primary.main,
+              backgroundColor: COLORS.secondary.main,
               opacity: 1,
               border: 0,
             },
@@ -314,6 +333,60 @@ const baseTheme: ThemeOptions = {
           borderRadius: 999,
           backgroundColor: COLORS.gray.silverGray,
           opacity: 1,
+        },
+      },
+    },
+    // @ts-ignore
+    MuiPickersDay: {
+      styleOverrides: {
+        root: {
+          fontFamily: FONTS.lexendDeca,
+          "&:hover": {
+            backgroundColor: "transparent",
+            color: COLORS.surface.black,
+            border: "1px solid black",
+          },
+          "&.Mui-selected": {
+            backgroundColor: `${COLORS.secondary.main} !important`,
+            color: `${COLORS.surface.white} !important`,
+            "&:hover": {
+              backgroundColor: `${COLORS.secondary.main} !important`,
+            },
+          },
+          "&.MuiPickersDay-today": {
+            backgroundColor: `${COLORS.secondary.main} !important`,
+            color: `${COLORS.surface.white} !important`,
+            "&.Mui-selected": {
+              backgroundColor: `${COLORS.secondary.main} !important`,
+            },
+          },
+        },
+      },
+    },
+    // @ts-ignore
+    MuiPickersYear: {
+      styleOverrides: {
+        yearButton: {
+          fontFamily: FONTS.lexendDeca,
+          borderRadius: "8px",
+          "&.Mui-selected": {
+            backgroundColor: `${COLORS.secondary.main} !important`,
+            color: `${COLORS.surface.white} !important`,
+          },
+          "&:hover": {
+            backgroundColor: `${COLORS.secondary.light} !important`,
+          },
+        },
+      },
+    },
+    // @ts-ignore
+    MuiPickersCalendarHeader: {
+      styleOverrides: {
+        label: {
+          fontFamily: FONTS.lexendDeca,
+          fontWeight: 400,
+          fontSize: 14,
+          color: COLORS.text.secondary,
         },
       },
     },

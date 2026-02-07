@@ -144,19 +144,30 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
                         alignItems: "center",
                         justifyContent: "space-between",
                         cursor: "pointer",
-                        "&:hover": { background: COLORS.natural[100] },
+                        backgroundColor: isSelected
+                          ? COLORS.secondary.main
+                          : "transparent",
+                        "&:hover": {
+                          background: isSelected
+                            ? COLORS.secondary.dark
+                            : COLORS.natural[100],
+                        },
                       }}
                     >
                       <Typography
                         variant="bodySmallLight"
-                        color={COLORS.text.primary}
+                        color={
+                          isSelected
+                            ? COLORS.surface.white
+                            : COLORS.text.primary
+                        }
                       >
                         {option.label}
                       </Typography>
 
                       {isSelected && (
                         <CheckIcon
-                          sx={{ color: COLORS.natural.blackMain, fontSize: 18 }}
+                          sx={{ color: COLORS.surface.white, fontSize: 18 }}
                         />
                       )}
                     </Box>

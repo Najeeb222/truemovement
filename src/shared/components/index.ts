@@ -13,3 +13,4 @@ export { default as ContentLibraryCustomHeader } from "./ContentLibraryCustomHea
 export { default as CustomCheckbox } from "./CustomCheckbox/CustomCheckbox";
 export { default as CreateTagModal } from "./CustomModal/CreateTagModal";
 export { default as DeleteTagModal } from "./CustomModal/DeleteTagModal";
+export { default as CustomDatePicker } from "./CustomDatePicker/CustomDatePicker";

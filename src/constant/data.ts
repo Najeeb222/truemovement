@@ -104,6 +104,61 @@ export const columns: Column<ProgramRow>[] = [
   { key: "date", label: "Date Uploaded", type: "date" },
   { key: "actions", label: "", type: "actions" },
 ];
+export const TeamInfoRows: ProgramRow[] = [
+  {
+    user: "Lower Back Relief",
+    streak: "Hockey",
+    longestStreak: "Lower Back",
+    badges: "No badges",
+    duration: "10-15 min",
+    status: "Published",
+    date: "12/13/2025",
+  },
+  {
+    user: "Hip Mobility Flow",
+    streak: "Football",
+    longestStreak: "Hamstring",
+    badges: "Foam Roller",
+    duration: "0-5 min",
+    status: "Draft",
+    date: "12/13/2025",
+  },
+  {
+    user: "Shoulder Stability",
+    streak: "Baseball",
+    longestStreak: "Neck & Shoulder",
+    badges: "Mat",
+    duration: "10-15 min",
+    status: "Scheduled",
+    date: "12/13/2025",
+  },
+  {
+    user: "Knee Strengthening",
+    streak: "Soccer",
+    longestStreak: "Calf",
+    badges: "Bender Ball",
+    duration: "20-25 min",
+    status: "Scheduled",
+    date: "12/13/2025",
+  },
+  {
+    user: "Full Body Recovery",
+    streak: "Lacrosse",
+    longestStreak: "Full Body",
+    badges: "Stability Ball",
+    duration: "0-5 min",
+
+    status: "Archived",
+    date: "12/13/2025",
+  },
+];
+
+export const TeamInfoColumns: Column<ProgramRow>[] = [
+  { key: "user", label: "User", type: "text" },
+  { key: "streak", label: "Current Streak", type: "streak" },
+  { key: "longestStreak", label: "Longest Streak", type: "date" },
+  { key: "badges", label: "Badges", type: "badges" },
+];
 export const AdminTableColumns = [
   { key: "name", label: "Name", type: "text" },
   { key: "email", label: "Email", type: "text" },
@@ -211,6 +266,14 @@ export const OrganizationRows: OrganizationRow[] = [
 export const adminRole = [
   { value: "superAdmin", label: "Super Admin" },
   { value: "contentManager", label: "Content Manager" },
+];
+export const analyticsSelect = [
+  { value: "allUsers", label: "All Users" },
+  { value: "allOrganizations", label: "All Organizations" },
+  { value: "acmeCorporation", label: "Acme Corporation" },
+  { value: "techStartInc", label: "TechStart Inc" },
+  { value: "globalFitnessCo", label: "Global Fitness Co" },
+  { value: "wellnessPartners", label: "Wellness Partners" },
 ];
 export const publishingOptions = [
   {

@@ -30,7 +30,7 @@ const RecentUploadCard = ({
       border={`1px solid ${COLORS.natural[100]}`}
       borderRadius="14px"
       width="100%"
-      maxWidth={"352px"}
+      // maxWidth={"352px"}
       display="flex"
       flexDirection={"column"}
       bgcolor={COLORS.surface.white}
@@ -51,7 +51,7 @@ const RecentUploadCard = ({
         {headerIcon && (
           <Box sx={{ display: "flex", alignItems: "center" }}>{headerIcon}</Box>
         )}
-        <Typography variant="bodyMeduiemLight" color={COLORS.text.primary} >
+        <Typography variant="bodyMeduiemLight" color={COLORS.text.primary}>
           {headerTitle}
         </Typography>
 
@@ -109,7 +109,7 @@ const RecentUploadCard = ({
               {showChips && (
                 <StatusChip
                   status={session.status}
-                // onClick={() => onChipClick?.(session.status)}
+                  // onClick={() => onChipClick?.(session.status)}
                 />
               )}
             </Box>

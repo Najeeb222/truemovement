@@ -17,6 +17,7 @@ const CustomPageHeader = ({
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
+        mt: { xs: 8, md: 0 },
       }}
     >
       <Stack direction="column" spacing={"8px"}>
